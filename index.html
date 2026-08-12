@@ -4,9 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#fff7fb">
-<meta name="description" content="Attendance Tracker — 55-Day TESDA Training Companion">
+<meta name="description" content="Bloom55 55-Day Training Tracker">
 <link rel="manifest" href="manifest.json">
-<title>Attendance Tracker</title>
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Attendance Tracker">
+<title>55-Day Training Tracker</title>
 <style>
 
 
@@ -120,7 +125,7 @@ body{letter-spacing:-.01em}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(135deg,#fffafd 0%,#fff8fc 55%,#faf7ff 100%)}
 button{font:inherit}
-.app{max-width:1024px;margin:auto;padding:28px 30px 132px}
+.app{max-width:1024px;margin:auto;padding:28px 30px 118px}
 .header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px}
 h1{font-size:46px;line-height:1.05;margin:0;font-weight:800;letter-spacing:-1.8px}
 .subtitle{font-size:22px;color:var(--muted);margin-top:16px}
@@ -173,10 +178,10 @@ textarea{width:100%;min-height:130px;border:1px solid var(--line);border-radius:
 .dark{--bg:#0f0d16;--card:#171421;--ink:#f8f5fb;--muted:#aaa3b8;--line:#30293a}
 .dark body{background:linear-gradient(135deg,#0f0d16,#14111d)}.dark .dashboard,.dark .schedule,.dark .row,.dark .stat,.dark .modal{background:#171421}.dark .bottom{background:rgba(18,15,25,.94)}.dark .date span{color:#f8f5fb}.dark .schedule-title .head-icon,.dark .badge,.dark .num{background:#291b25}.dark .ring .track{stroke:#332734}
 @media(max-width:900px){
- .app{padding:24px 18px 132px}h1{font-size:36px}.subtitle{font-size:18px}.dashboard{grid-template-columns:1fr 1fr;padding:24px}.metric{padding:18px}.metric+.metric{border-left:0}.progress-wrap{grid-column:1/-1;justify-content:center}.ring{width:165px;height:165px}
+ .app{padding:24px 18px 118px}h1{font-size:36px}.subtitle{font-size:18px}.dashboard{grid-template-columns:1fr 1fr;padding:24px}.metric{padding:18px}.metric+.metric{border-left:0}.progress-wrap{grid-column:1/-1;justify-content:center}.ring{width:165px;height:165px}
 }
 @media(max-width:620px){
- .app{padding:18px 12px 122px}.header{margin-bottom:20px}h1{font-size:29px;letter-spacing:-1px}.subtitle{font-size:16px;margin-top:9px}.top-actions{gap:10px}.icon-btn svg{width:27px;height:27px}
+ .app{padding:18px 12px 108px}.header{margin-bottom:20px}h1{font-size:29px;letter-spacing:-1px}.subtitle{font-size:16px;margin-top:9px}.top-actions{gap:10px}.icon-btn svg{width:27px;height:27px}
  .dashboard{grid-template-columns:1fr;padding:16px;border-radius:20px}.metric{min-height:auto;padding:15px 8px}.metric+.metric{border-top:1px solid var(--line)}.progress-wrap{justify-content:flex-start}.ring{width:142px;height:142px}.percent{font-size:32px}.ring-label{font-size:16px}.metric-title{font-size:18px}.big{font-size:26px}.helper{font-size:16px}
  .schedule-head{padding:20px 16px}.schedule-title{font-size:21px;gap:10px}.schedule-title .head-icon{width:48px;height:48px}.schedule-title svg{width:25px}.badge{font-size:15px;padding:9px 13px}.rows{padding:0 10px 18px}.row{gap:11px;padding:9px 11px;min-height:70px;border-radius:17px}.num{width:46px;height:46px;font-size:19px}.date{font-size:17px}.day-label{font-size:15px;margin-right:4px}.check{width:31px;height:31px}.row.done .check:after{font-size:18px}.fab{right:18px;bottom:82px;width:64px;height:64px}.fab svg{width:32px}.nav-btn svg{width:26px;height:26px}.nav-btn span{font-size:12px}.bottom-inner{padding:8px 6px}.stat-grid{grid-template-columns:1fr}
 }
@@ -234,366 +239,6 @@ body.dark .settings-panel-inner,body.night .settings-panel-inner{background:#211
 body.dark .settings-panel-row,body.night .settings-panel-row{border-color:#443a45}
 body.dark .settings-panel-row small,body.night .settings-panel-row small{color:#bcb1bc}
 
-
-/* Settings + profile */
-.settings-panel{color:var(--ink)}
-.settings-panel-inner{max-height:calc(100vh - 92px);overflow:auto}
-.settings-section-title{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:#e64a75;font-weight:850;margin:18px 2px 8px}
-.profile-card{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.55);margin-bottom:10px}
-.profile-avatar{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#fff0f5;font-size:27px;flex:none}
-.profile-name{font-size:17px;font-weight:850}.profile-meta{font-size:12px;color:var(--muted);margin-top:3px}
-.settings-field{display:block;font-size:12px;font-weight:800;color:var(--muted);margin:10px 0}
-.settings-field input,.settings-field select{width:100%;margin-top:6px;border:1px solid var(--line);border-radius:12px;padding:10px 11px;font:inherit;background:var(--card);color:var(--ink);outline:none}
-.settings-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
-.settings-more-grid{display:grid;gap:9px}
-.settings-more-btn{width:100%;padding:13px;border:1px solid var(--line);border-radius:15px;background:var(--card);color:var(--ink);text-align:left;cursor:pointer}
-.settings-more-btn b{display:block;font-size:14px}.settings-more-btn small{display:block;color:var(--muted);margin-top:3px}
-.settings-close{width:100%;margin-top:14px;border:0;border-radius:13px;padding:11px;background:#f5edf2;color:#5e586c;font-weight:800;cursor:pointer}
-
-/* Night mode: make all primary/secondary text readable on dark surfaces */
-body.dark .settings-panel-inner,body.night .settings-panel-inner,
-body.dark .profile-card,body.night .profile-card,
-body.dark .settings-more-btn,body.night .settings-more-btn{
-  color:#f8f5fb;background:#211e24;border-color:#443a45;
-}
-body.dark .profile-meta,body.night .profile-meta,
-body.dark .settings-field,body.night .settings-field,
-body.dark .settings-more-btn small,body.night .settings-more-btn small{color:#c9becb}
-body.dark .profile-avatar,body.night .profile-avatar{background:#392a34}
-body.dark .settings-field input,body.dark .settings-field select,
-body.night .settings-field input,body.night .settings-field select{
-  background:#242129!important;color:#f8f1f7!important;border-color:#49404d!important;
-}
-body.dark .settings-close,body.night .settings-close{background:#39313c;color:#f8f1f7}
-body.dark .stat,body.night .stat,
-body.dark .empty-state,body.night .empty-state,
-body.dark .calendar-legend,body.night .calendar-legend,
-body.dark .day-label,body.night .day-label,
-body.dark .metric-title,body.night .metric-title,
-body.dark .helper,body.night .helper,
-body.dark .ring-label,body.night .ring-label,
-body.dark .subtitle,body.night .subtitle,
-body.dark .muted,body.night .muted{color:var(--muted)}
-body.dark .stat b,body.night .stat b,
-body.dark .schedule-title,body.night .schedule-title,
-body.dark .date,body.night .date,
-body.dark .row,body.night .row,
-body.dark .modal h3,body.night .modal h3,
-body.dark .modal,body.night .modal{color:var(--ink)}
-body.dark .modal .secondary,body.night .modal .secondary{background:#39313c;color:#f8f1f7}
-body.dark .icon-btn,body.night .icon-btn{color:#f8f1fb}
-
-
-/* FINAL ACCESSIBILITY + NAVIGATION POLISH */
-:root{
-  --text-primary:#171827;
-  --text-secondary:#5f5a70;
-  --nav-text:#6b657c;
-  --surface:#ffffff;
-}
-html.dark, html.night{
-  --text-primary:#f8f5fb;
-  --text-secondary:#c9c0ce;
-  --nav-text:#b9b0c3;
-  --surface:#171421;
-}
-
-/* Ensure native controls never fall back to browser-black text */
-button,input,textarea,select{color:inherit}
-.row,.cal-cell,.nav-btn,.month-arrow,.icon-btn,.settings-more-btn,
-.settings-close,.settings-btn,.quick-add-item{color:var(--text-primary)}
-.row{background:rgba(255,255,255,.92)}
-.row .date,.row .date b,.row .date span{color:var(--text-primary)!important}
-.row .day-label{color:var(--text-secondary)!important}
-.today-card,.task-forecast,.schedule,.dashboard,.modal,.stat,
-.calendar-entry,.day-logged{color:var(--text-primary)}
-.today-card .today-copy,.task-forecast-item small,.task-forecast-empty,
-.calendar-empty,.day-logged>b,.calendar-legend,.helper,.ring-label,
-.metric-title,.muted,.subtitle{color:var(--text-secondary)}
-.field-label{color:var(--text-secondary)}
-.modal p{color:var(--text-secondary)}
-.nav-btn{color:var(--nav-text)}
-.nav-btn.active{color:#ee4f7d}
-.bottom{color:var(--text-primary)}
-
-/* Dark surfaces and text */
-html.dark body,html.night body{
-  color:var(--text-primary);
-  background:linear-gradient(135deg,#0f0d16,#14111d);
-}
-html.dark .dashboard,html.dark .schedule,html.dark .row,html.dark .stat,
-html.dark .modal,html.dark .today-card,html.dark .task-forecast,
-html.dark .task-forecast-item,html.dark .calendar-entry,html.dark .day-logged,
-html.night .dashboard,html.night .schedule,html.night .row,html.night .stat,
-html.night .modal,html.night .today-card,html.night .task-forecast,
-html.night .task-forecast-item,html.night .calendar-entry,html.night .day-logged{
-  background:#171421;
-  color:var(--text-primary);
-}
-html.dark .row,html.night .row{background:#171421;border-color:#6b4a5d}
-html.dark .row .date,html.dark .row .date b,html.dark .row .date span,
-html.night .row .date,html.night .row .date b,html.night .row .date span{color:#f8f5fb!important}
-html.dark .row .day-label,html.night .row .day-label{color:#c9c0ce!important}
-html.dark .today-card,html.night .today-card{background:linear-gradient(100deg,#211a22,#171421,#201b29);border-color:#443745}
-html.dark .today-card .today-copy,html.night .today-card .today-copy{color:#c9c0ce}
-html.dark .task-forecast,html.night .task-forecast{background:linear-gradient(100deg,#211a22,#1d1b24,#201b29);border-color:#443745}
-html.dark .task-forecast-item,html.night .task-forecast-item{background:#29242d;border-color:#514451}
-html.dark .task-forecast-item small,html.night .task-forecast-item small,
-html.dark .task-forecast-empty,html.night .task-forecast-empty{color:#c9c0ce}
-html.dark .calendar-entry,html.night .calendar-entry,
-html.dark .day-logged,html.night .day-logged{background:#211d26;border-color:#443745}
-html.dark .calendar-entry-content small,html.night .calendar-entry-content small,
-html.dark .calendar-empty,html.night .calendar-empty{color:#c9c0ce}
-html.dark .cal-cell,html.night .cal-cell{color:#f8f5fb}
-html.dark .cal-cell.head,html.night .cal-cell.head{color:#aaa1b2}
-html.dark .cal-cell.muted,html.night .cal-cell.muted{color:#746b7b}
-html.dark .month-arrow,html.night .month-arrow{background:#211d26;color:#f8f5fb;border-color:#443745}
-html.dark .calendar-legend,html.night .calendar-legend{color:#c9c0ce}
-html.dark .empty-state,html.night .empty-state{color:#c9c0ce}
-html.dark .metric-title,html.night .metric-title,
-html.dark .helper,html.night .helper,
-html.dark .ring-label,html.night .ring-label,
-html.dark .subtitle,html.night .subtitle{color:#c9c0ce}
-html.dark .icon-btn,html.night .icon-btn{color:#f8f5fb}
-html.dark .nav-btn,html.night .nav-btn{color:#b9b0c3}
-html.dark .nav-btn.active,html.night .nav-btn.active{color:#ee4f7d}
-html.dark .bottom,html.night .bottom{background:rgba(15,12,21,.97);border-top-color:#30293a}
-html.dark .settings-panel-inner,html.night .settings-panel-inner{color:#f8f5fb}
-html.dark .settings-panel-row,html.night .settings-panel-row{color:#f8f5fb}
-html.dark .settings-panel-row small,html.night .settings-panel-row small{color:#c9c0ce}
-
-/* Light mode remains dark-text */
-html:not(.dark):not(.night) .row .date,
-html:not(.dark):not(.night) .row .date b,
-html:not(.dark):not(.night) .row .date span{color:#171827!important}
-html:not(.dark):not(.night) .row .day-label{color:#69647d!important}
-
-/* Bottom navigation: four evenly spaced modules */
-.bottom-inner{
-  max-width:1024px;
-  width:100%;
-  grid-template-columns:repeat(4,minmax(0,1fr))!important;
-  padding:9px 14px calc(9px + env(safe-area-inset-bottom,0px));
-  gap:4px;
-}
-.nav-btn{
-  min-width:0;
-  width:100%;
-  min-height:62px;
-  justify-content:center;
-  gap:4px;
-  padding:7px 4px;
-  border-radius:14px;
-}
-.nav-btn svg{width:29px;height:29px;flex:none}
-.nav-btn span{
-  font-size:13px;
-  line-height:1.1;
-  white-space:nowrap;
-}
-.nav-btn:hover{background:rgba(238,79,125,.08)}
-@media(max-width:620px){
-  .bottom-inner{padding:7px 8px calc(7px + env(safe-area-inset-bottom,0px));gap:2px}
-  .nav-btn{min-height:58px;padding:6px 2px;border-radius:12px}
-  .nav-btn svg{width:27px;height:27px}
-  .nav-btn span{font-size:12px}
-}
-
-
-.cal-cell.hit{background:#ffe3ec!important;color:#241d25!important;font-weight:850!important;box-shadow:inset 0 0 0 2px #f28bab}
-body.dark .cal-cell.hit,body.night .cal-cell.hit{background:#ffdce8!important;color:#241b22!important}
-.calendar-grid .cal-cell{min-height:42px;display:grid;place-items:center;position:relative}
-.calendar-grid .cal-cell.head{min-height:auto;display:block}
-.file-input{width:100%;padding:9px!important;border:1px dashed var(--line)!important;background:rgba(255,255,255,.35)!important}
-.attachment-preview{display:flex;align-items:center;gap:8px;width:100%;padding:9px;border:1px solid var(--line);border-radius:12px;margin-top:6px}
-.calendar-entry-attachment{display:inline-flex;gap:6px;margin-top:7px;color:#d94168;text-decoration:none;font-weight:750;font-size:12px}
-.profile-photo{width:58px;height:58px;border-radius:50%;object-fit:cover;display:block}.profile-upload{display:flex;gap:10px;align-items:center;padding:10px;border:1px dashed var(--line);border-radius:14px}.profile-upload small{display:block;color:var(--muted);margin-top:3px}
-.greeting{font-size:18px;font-weight:800;color:#e64a75;margin-bottom:7px}.greeting span{color:var(--ink)}body.dark .greeting span{color:#f8f5fb}
-@media(max-width:620px){.calendar-grid{gap:4px}.calendar-grid .cal-cell{min-height:39px}.greeting{font-size:16px}.profile-upload{align-items:flex-start}}
-
-/* v4 UI polish: adaptive contrast + universal modal X */
-:root{
-  --adaptive-primary:#211b27;
-  --adaptive-secondary:#625b6d;
-  --adaptive-highlight-text:#211b27;
-}
-html.dark,html.night{
-  --adaptive-primary:#f8f5fb;
-  --adaptive-secondary:#d0c8d4;
-  --adaptive-highlight-text:#211b27;
-}
-body,button,input,textarea,select{color:var(--adaptive-primary)}
-h1,h2,h3,h4,h5,h6,p,li,strong,b,span,label,small,div{--inherit-text:var(--adaptive-primary)}
-html.dark .calendar-grid .cal-cell.hit,html.night .calendar-grid .cal-cell.hit,
-html.dark .cal-cell.hit,html.night .cal-cell.hit{
-  color:var(--adaptive-highlight-text)!important;
-  -webkit-text-fill-color:var(--adaptive-highlight-text)!important;
-  text-shadow:none!important;
-}
-html.dark .calendar-grid .cal-cell.hit *,html.night .calendar-grid .cal-cell.hit *{
-  color:var(--adaptive-highlight-text)!important;
-  -webkit-text-fill-color:var(--adaptive-highlight-text)!important;
-}
-html.dark .primary,html.night .primary{color:#fff!important;-webkit-text-fill-color:#fff!important}
-html.dark .secondary,html.night .secondary{color:#f8f5fb!important;-webkit-text-fill-color:#f8f5fb!important}
-html.dark .modal input,html.dark .modal textarea,html.dark .modal select,
-html.night .modal input,html.night .modal textarea,html.night .modal select{
-  color:#f8f5fb!important;-webkit-text-fill-color:#f8f5fb!important;background:#24212b!important;
-}
-html.dark .modal input::placeholder,html.dark .modal textarea::placeholder,
-html.night .modal input::placeholder,html.night .modal textarea::placeholder{color:#aaa1b2!important;opacity:1}
-.modal{position:relative}
-.modal-x{
-  position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;
-  border:1px solid var(--line)!important;background:rgba(245,237,242,.92)!important;
-  color:#4e4758!important;-webkit-text-fill-color:#4e4758!important;
-  display:grid!important;place-items:center!important;padding:0!important;font-size:25px!important;
-  line-height:1;font-weight:500;cursor:pointer;z-index:3;box-shadow:none!important;
-}
-html.dark .modal-x,html.night .modal-x{
-  background:#2d2733!important;border-color:#514655!important;color:#fff!important;-webkit-text-fill-color:#fff!important;
-}
-.modal-x:hover{transform:scale(1.04)}
-/* Close/cancel-as-close controls are replaced by the top-right X. */
-#closeCalendarDate,#closeDay,#closeModal,#cancelSettings{display:none!important}
-@media(max-width:620px){.modal{padding:22px 18px 20px}.modal-x{top:9px;right:9px;width:38px;height:38px}}
-
-
-/* v5 — Attendance companion + weekly schedule */
-.week-switch{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:0 0 16px;padding:5px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.28)}
-.week-switch button{border:0;background:transparent;color:var(--adaptive-secondary);border-radius:13px;padding:11px 12px;font-weight:800;cursor:pointer}
-.week-switch button.active{background:var(--pink);color:#fff;box-shadow:0 6px 16px rgba(238,79,125,.18)}
-.week-summary{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:2px 4px 14px;color:var(--adaptive-secondary);font-size:13px}
-.week-card{border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.28);overflow:hidden;margin-bottom:12px}
-.week-head{width:100%;display:flex;align-items:center;gap:10px;border:0;background:transparent;color:var(--adaptive-primary);padding:14px 15px;cursor:pointer;text-align:left}
-.week-head .week-icon{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:var(--pink-soft);color:var(--pink);flex:none}
-.week-head .week-name{font-weight:900;color:var(--pink);font-size:14px;letter-spacing:.03em}
-.week-head .week-range{font-size:13px;color:var(--adaptive-secondary);margin-left:3px}
-.week-head .week-count{margin-left:auto;border:1px solid rgba(238,79,125,.3);border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800;color:var(--adaptive-secondary);white-space:nowrap}
-.week-head .chev{font-size:20px;color:var(--adaptive-secondary);width:20px;text-align:center}
-.week-days{border-top:1px solid var(--line)}
-.week-day{display:grid;grid-template-columns:50px minmax(0,1fr) 34px;align-items:center;gap:8px;width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--adaptive-primary);padding:12px 14px;cursor:pointer;text-align:left}
-.week-day:last-child{border-bottom:0}
-.week-day .weekday{font-weight:850;color:var(--pink);font-size:13px}
-.week-day .date-main{font-weight:850;font-size:15px;color:var(--adaptive-primary)}
-.week-day .status{width:28px;height:28px;border-radius:50%;border:2px solid #cfc7d5;display:grid;place-items:center;color:transparent;font-weight:900}
-.week-day.done .status{background:var(--pink);border-color:var(--pink);color:#fff}
-.week-day.today{background:rgba(238,79,125,.06)}
-.week-day.today .date-main{color:var(--pink)}
-.week-note{padding:12px 14px;border:1px dashed rgba(238,79,125,.35);border-radius:14px;margin:14px 0;color:var(--adaptive-secondary);font-size:12px}
-.today-training{margin:0 0 18px;padding:18px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.32)}
-.today-training-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
-.today-training-kicker{font-size:11px;color:var(--pink);font-weight:900;text-transform:uppercase;letter-spacing:.08em}.today-training-title{font-size:21px;font-weight:900;margin-top:3px;color:var(--adaptive-primary)}.today-training-sub{color:var(--adaptive-secondary);font-size:13px;margin-top:3px}
-.attendance-pills{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:14px}.attendance-pill{border:1px solid var(--line);background:transparent;color:var(--adaptive-primary);border-radius:12px;padding:9px 4px;font-size:11px;font-weight:850;cursor:pointer}.attendance-pill.active{background:var(--pink);border-color:var(--pink);color:#fff}
-.checklist{margin-top:15px;display:grid;gap:7px}.check-item{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:12px;background:rgba(255,255,255,.24);color:var(--adaptive-primary);cursor:pointer;font-size:13px}.check-item input{accent-color:var(--pink);width:17px;height:17px}.check-item.done{text-decoration:line-through;color:var(--adaptive-secondary)}
-.today-mini-actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:12px}.today-mini-actions button{border:1px solid var(--line);background:transparent;color:var(--adaptive-primary);border-radius:12px;padding:9px 6px;font-size:11px;font-weight:800;cursor:pointer}.today-mini-actions button.primary-mini{background:var(--pink);border-color:var(--pink);color:#fff}
-.journal-grid{display:grid;gap:10px}.mood-row{display:flex;gap:8px;flex-wrap:wrap}.mood-btn{border:1px solid var(--line);background:transparent;border-radius:12px;padding:8px 10px;cursor:pointer;color:var(--adaptive-primary)}.mood-btn.active{background:#ffe1ec;color:#241d25;border-color:#f28bab}
-.hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.hours-result{padding:10px 12px;border-radius:12px;background:rgba(238,79,125,.08);color:var(--adaptive-primary);font-weight:800;font-size:13px}
-.stat-grid.v5{grid-template-columns:repeat(2,1fr)}.stat.v5{min-height:100px}.stat.v5 b{font-size:24px}.report-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}.report-actions button{border:1px solid var(--line);border-radius:13px;padding:11px;background:transparent;color:var(--adaptive-primary);font-weight:800;cursor:pointer}.report-actions .primary-report{background:var(--pink);border-color:var(--pink);color:#fff}
-.req-list{display:grid;gap:9px}.req-item{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.25)}.req-item input{accent-color:var(--pink);width:18px;height:18px}.req-item span{flex:1;color:var(--adaptive-primary);font-weight:750}.req-item small{color:var(--adaptive-secondary)}
-@media(max-width:620px){.week-head{padding:12px}.week-day{grid-template-columns:44px minmax(0,1fr) 32px;padding:11px 12px}.attendance-pills{grid-template-columns:repeat(2,1fr)}.today-mini-actions{grid-template-columns:1fr 1fr}.today-mini-actions button:last-child{grid-column:1/-1}.report-actions{grid-template-columns:1fr}.week-summary{font-size:12px}}
-html.dark .week-head .week-icon,html.night .week-head .week-icon{background:#35242e}.dark .mood-btn.active,.night .mood-btn.active{color:#241d25}.dark .check-item,.night .check-item{background:rgba(255,255,255,.035)}
-html.dark .file-input,html.night .file-input{background:#24212b!important;color:#f8f5fb!important}
-#qaCancel,#cancelEditQa,#cancelEditDayNote,#cancelPause,#cancelSettings{display:none!important}
-
-
-/* v6 single-week schedule */
-.week-pager{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;margin-top:16px}
-.week-pager button{min-height:46px;border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--adaptive-primary);font:inherit;font-weight:850;padding:10px 14px;cursor:pointer}
-.week-pager button:first-child{text-align:left}.week-pager button:last-child{text-align:right}
-.week-pager button:disabled{opacity:.38;cursor:not-allowed}
-.week-pager-label{text-align:center;color:var(--adaptive-secondary);font-weight:850;font-size:13px;white-space:nowrap}
-.week-current{border:1px solid rgba(238,79,125,.25);border-radius:20px;background:rgba(238,79,125,.035);overflow:hidden}
-.week-current .week-head{cursor:default;padding:16px}
-.week-current .week-days{background:transparent}
-@media(max-width:620px){.week-pager{grid-template-columns:1fr auto 1fr;gap:7px}.week-pager button{padding:9px 10px;font-size:13px}.week-pager-label{font-size:12px}}
-
-
-.req-toolbar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:10px 0 12px}
-.req-toolbar small{color:var(--muted);line-height:1.3}
-.req-add{border:0;border-radius:12px;padding:9px 12px;background:#ef4f83;color:#fff;font-weight:850;cursor:pointer;white-space:nowrap}
-.req-item{display:grid;grid-template-columns:22px minmax(0,1fr) auto 34px;align-items:center;gap:8px}
-.req-item span{min-width:0;overflow-wrap:anywhere}
-.req-delete{width:30px;height:30px;border:0;border-radius:50%;background:transparent;color:var(--muted);font-size:18px;font-weight:800;cursor:pointer}
-.req-delete:hover{background:rgba(239,79,131,.12);color:#ef4f83}
-.req-empty{padding:18px 10px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}
-
-
-.attendance-section{margin:16px 0;padding:14px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.22)}
-.attendance-section-title{font-weight:900;font-size:14px;margin-bottom:10px;color:var(--adaptive-primary)}
-.attendance-status-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
-.attendance-status-btn{border:1px solid var(--line);border-radius:11px;padding:9px 5px;background:transparent;color:var(--adaptive-primary);font-weight:850;font-size:11px;cursor:pointer}
-.attendance-status-btn.active{background:var(--pink);border-color:var(--pink);color:#fff}
-.time-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
-.time-actions{display:flex;gap:7px;margin-top:8px}
-.time-now{border:1px solid var(--line);background:transparent;color:var(--adaptive-primary);border-radius:10px;padding:7px 10px;font-size:11px;font-weight:800;cursor:pointer}
-.attendance-hours{margin-top:10px;padding:9px 11px;border-radius:11px;background:rgba(239,79,131,.09);color:var(--adaptive-primary);font-weight:850}
-.attendance-status-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border-radius:999px;background:rgba(239,79,131,.1);color:var(--pink);font-size:11px;font-weight:900}
-@media(max-width:620px){.attendance-status-grid{grid-template-columns:repeat(2,1fr)}}
-
-
-.supplies-summary{margin:12px 0;padding:12px 14px;border-radius:14px;background:rgba(239,79,131,.08);color:var(--adaptive-primary);font-weight:850}
-.supplies-progress{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:8px}
-.supplies-progress>span{display:block;height:100%;background:var(--pink);border-radius:99px}
-.supply-group{margin:14px 0}
-.supply-group-title{font-weight:900;margin-bottom:7px;color:var(--adaptive-primary)}
-.supply-row{display:grid;grid-template-columns:22px minmax(0,1fr) 48px auto 30px;gap:7px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
-.supply-row:last-child{border-bottom:0}
-.supply-name{font-weight:750;overflow-wrap:anywhere}
-.supply-meta{font-size:11px;color:var(--muted)}
-.supply-price{font-size:11px;color:var(--pink);font-weight:850;text-align:right}
-.supply-delete{border:0;background:transparent;color:var(--muted);font-size:19px;font-weight:900;cursor:pointer;border-radius:50%;width:28px;height:28px}
-.supply-delete:hover{background:rgba(239,79,131,.12);color:var(--pink)}
-.supply-add{border:0;background:var(--pink);color:#fff;border-radius:12px;padding:10px 13px;font-weight:900;cursor:pointer}
-.supply-edit{border:0;background:transparent;color:var(--pink);font-weight:850;cursor:pointer}
-.supply-empty{text-align:center;color:var(--muted);padding:18px 8px;border:1px dashed var(--line);border-radius:13px}
-.supply-form{display:grid;gap:10px;margin-top:12px}
-.supply-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-@media(max-width:620px){.supply-row{grid-template-columns:22px minmax(0,1fr) auto 28px}.supply-price{display:none}.supply-form-grid{grid-template-columns:1fr}}
-
-
-.profile-card{display:flex;align-items:center;gap:14px;padding:14px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.18);margin:10px 0 14px}
-.profile-avatar-lg{width:64px;height:64px;border-radius:50%;object-fit:cover;background:var(--pink);display:grid;place-items:center;color:#fff;font-size:25px;font-weight:900;flex:0 0 auto}
-.profile-meta{min-width:0}
-.profile-meta h4{margin:0 0 4px;font-size:17px;color:var(--adaptive-primary)}
-.profile-meta p{margin:0;color:var(--muted);font-size:12px}
-.profile-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
-.profile-actions button{border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--adaptive-primary);padding:7px 10px;font-weight:800;cursor:pointer}
-.profile-form{display:grid;gap:10px}
-.profile-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.profile-photo-row{display:flex;align-items:center;gap:12px}
-.profile-photo-input{font-size:11px;color:var(--adaptive-primary)}
-.celebrate{position:relative;overflow:hidden;text-align:center;padding:8px 4px 4px}
-.celebrate-icon{font-size:58px;line-height:1;margin:4px 0 10px}
-.celebrate h2{margin:0 0 6px;font-size:28px;color:var(--adaptive-primary)}
-.celebrate p{color:var(--muted);margin:6px 0}
-.celebrate-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}
-.celebrate-stat{padding:11px 6px;border-radius:14px;background:rgba(239,79,131,.08)}
-.celebrate-stat b{display:block;font-size:18px;color:var(--pink)}
-.celebrate-stat span{font-size:10px;color:var(--muted)}
-.celebrate-card{border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0;background:rgba(255,255,255,.16)}
-.celebrate-card strong{color:var(--adaptive-primary)}
-.confetti{position:absolute;inset:0;pointer-events:none;font-size:20px;opacity:.75}
-@media(max-width:620px){.profile-form-grid{grid-template-columns:1fr}.celebrate-stats{grid-template-columns:1fr 1fr 1fr}}
-
-
-.smart-reminder{padding:4px 2px 0}
-.smart-reminder-hero{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.smart-reminder-icon{width:50px;height:50px;border-radius:16px;background:rgba(239,79,131,.12);display:grid;place-items:center;font-size:27px;flex:0 0 auto}
-.smart-reminder h3{margin:0;color:var(--adaptive-primary)}
-.smart-reminder-date{font-size:12px;color:var(--muted);margin-top:3px}
-.smart-reminder-card{padding:12px 13px;border:1px solid var(--line);border-radius:15px;margin:8px 0;background:rgba(255,255,255,.16)}
-.smart-reminder-card b{color:var(--adaptive-primary)}
-.smart-reminder-list{margin:7px 0 0;padding-left:19px;color:var(--adaptive-primary)}
-.smart-reminder-list li{margin:6px 0}
-.smart-reminder-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.smart-reminder-actions button{flex:1;min-width:120px}
-.reminder-toggle-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
-.reminder-toggle-row:last-child{border-bottom:0}
-.reminder-toggle-row span{font-weight:750;color:var(--adaptive-primary)}
-.reminder-toggle-row small{display:block;color:var(--muted);font-weight:500;margin-top:2px}
-.reminder-toggle-row input{width:20px;height:20px;accent-color:var(--pink)}
-
 </style>
 </head>
 <body>
@@ -610,23 +255,6 @@ let active = "Schedule";
 let selectedDay = null;
 let calendarCursor = new Date(START.getFullYear(), START.getMonth(), 1);
 let dark = localStorage.getItem("bloom55.dark") === "1";
-let profile = (() => {
-  try {
-    return JSON.parse(localStorage.getItem("bloom55.profile") || '{"name":"","role":"Housekeeping NC II Trainee","avatar":"🌸","photo":""}');
-  } catch(e) {
-    return {name:"",role:"Housekeeping NC II Trainee",avatar:"🌸"};
-  }
-})();
-function saveProfile(){
-  localStorage.setItem("bloom55.profile",JSON.stringify(profile));
-}
-function profileDisplayName(){
-  return profile.name && profile.name.trim() ? profile.name.trim() : "Your Profile";
-}
-function greetingText(){const h=new Date().getHours(),part=h<12?"Good morning":h<18?"Good afternoon":"Good evening",name=profile.name&&profile.name.trim()?escHtml(profile.name.trim()):"there";return `${part}, <span>${name}!</span>`;}
-function compressImageFile(file,maxSize=900,quality=.78){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>{const img=new Image();img.onload=()=>{const scale=Math.min(1,maxSize/Math.max(img.width,img.height)),c=document.createElement("canvas");c.width=Math.max(1,Math.round(img.width*scale));c.height=Math.max(1,Math.round(img.height*scale));c.getContext("2d").drawImage(img,0,0,c.width,c.height);resolve({data:c.toDataURL("image/jpeg",quality),name:file.name});};img.onerror=reject;img.src=r.result;};r.onerror=reject;r.readAsDataURL(file);});}
-function fileToDataUrl(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve({data:r.result,name:file.name});r.onerror=reject;r.readAsDataURL(file);});}
-
 
 const icon = {
  moon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.6 6.6 0 0 0 21 12.8Z"/></svg>`,
@@ -741,7 +369,7 @@ function skipReasonPrompt(iso){
     <button type="button" class="primary" id="confirmPause">⏸ Pause Day</button>
    </div>
  </div>`;
- addModalCloseX(o);o.classList.add("show");
+ o.classList.add("show");
  if(existing?.type) document.getElementById("pauseReason").value=existing.type;
  document.getElementById("cancelPause").onclick=()=>openCalendarDate(iso);
  document.getElementById("confirmPause").onclick=()=>{
@@ -771,36 +399,21 @@ function todayTrainingDay(){
  return match || null;
 }
 function save(){ localStorage.setItem(KEY,JSON.stringify([...completed].sort((a,b)=>a-b))); localStorage.setItem(NOTES_KEY,notes); }
-function setTheme(){
-  document.documentElement.classList.toggle("dark",dark);
-  document.body.classList.toggle("dark",dark);
-  document.documentElement.classList.toggle("night",dark);
-  document.body.classList.toggle("night",dark);
-  localStorage.setItem("bloom55.dark",dark?"1":"0");
-}
+function setTheme(){ document.documentElement.classList.toggle("dark",dark); localStorage.setItem("bloom55.dark",dark?"1":"0"); }
 function ringSvg(percent){
  const r=42,c=2*Math.PI*r,offset=c*(1-percent/100);
  return `<svg viewBox="0 0 100 100"><defs><linearGradient id="grad"><stop offset="0%" stop-color="#f8b4d9"/><stop offset="100%" stop-color="#f59fcb"/></linearGradient></defs><circle class="track" cx="50" cy="50" r="${r}"/><circle class="value" cx="50" cy="50" r="${r}" stroke-dasharray="${c}" stroke-dashoffset="${offset}"/></svg>`;
 }
 function dashboard(){
- const pct=Math.round(completed.size/TOTAL*100),end=dateFor(TOTAL),a=attendanceStats(),attRate=a.total?Math.round((a.present+a.late)/a.total*100):0;
+ const pct=Math.round(completed.size/TOTAL*100);
+ const end=dateFor(TOTAL);
  return `<section class="dashboard">
    <div class="metric progress-wrap"><div class="ring">${ringSvg(pct)}<div class="ring-center"><div class="percent">${pct}<small>%</small></div><div class="ring-label">Progress</div></div></div></div>
    <div class="metric"><div class="metric-title">Completed</div><div class="big"><span class="pink">${completed.size}</span> / ${TOTAL} <span class="muted" style="font-size:22px;font-weight:500">days</span></div></div>
-   <div class="metric"><div class="metric-title">Attendance Rate</div><div class="big pink">${attRate}%</div><div class="helper">${a.total} logged</div></div>
-   <div class="metric"><div class="metric-title">Current Streak</div><div class="big pink">${streak()} days</div><div class="helper">Best: ${longestStreak()} days</div></div>
+   <div class="metric"><div class="streak-box"><div class="metric-icon fire">${icon.flame}</div><div><div class="metric-title">Current Streak</div><div class="big pink">${streak()} days</div><div class="helper">Keep it going!</div></div></div></div>
+   <div class="metric"><div class="end-box"><div class="metric-icon cal">${icon.cal}</div><div><div class="metric-title">End Date</div><div class="big" style="font-size:21px">${fmt(end,false)}</div><div class="helper">55 training days</div></div></div></div>
  </section>`;
 }
-function todayTrainingPanel(){
- const d=todayTrainingDay()||trainingDays().find(x=>!completed.has(x.id)); if(!d)return "";
- const iso=isoDate(d.date),att=attendanceForDate(iso),j=getJournal(d.id),checks=getChecklist(d.id),doneCount=checks.filter(Boolean).length;
- return `<section class="today-training"><div class="today-training-head"><div><div class="today-training-kicker">${todayTrainingDay()?"Today’s Training":"Next Training Day"}</div><div class="today-training-title">${fmt(d.date)}</div><div class="today-training-sub">Training Day ${d.id} of ${TOTAL}</div></div><div class="badge">${completed.has(d.id)?"Complete":"Upcoming"}</div></div>
- <div class="attendance-pills">${["Present","Late","Absent","Excused"].map(x=>`<button class="attendance-pill ${att===x?"active":""}" data-attendance="${d.id}" data-status="${x}">${x}</button>`).join("")}</div>
- <div class="checklist">${CHECK_ITEMS.map((x,i)=>`<label class="check-item ${checks[i]?"done":""}"><input type="checkbox" data-check="${d.id}" data-check-index="${i}" ${checks[i]?"checked":""}>${x}</label>`).join("")}</div>
- <div class="today-mini-actions"><button type="button" data-journal="${d.id}">📝 Journal</button><button type="button" data-hours="${d.id}">⏱ Hours</button><button type="button" class="primary-mini" data-day="${d.id}" data-detail="${d.id}">${completed.has(d.id)?"View Day":"Open Day"}</button></div>
- <div class="week-summary" style="padding:10px 0 0"><span>Checklist ${doneCount}/${CHECK_ITEMS.length}</span><span>${att?"Attendance: "+att:"Not logged"}</span></div></section>`;
-}
-
 function todayCard(){
  const todayDay=todayTrainingDay();
  const next=trainingDays().find(d=>!completed.has(d.id));
@@ -814,495 +427,18 @@ function todayCard(){
    <button class="today-action" data-day="${target.id}">${done ? "View Day" : "Start Training"} <span>→</span></button>
  </section>`;
 }
-function getAttendanceMap(){
- try{return JSON.parse(localStorage.getItem("bloom55.attendance")||"{}")}catch(e){return {}}
-}
-function getAttendanceRecord(iso){
- const x=getAttendanceMap()[iso];
- if(!x)return {status:"",timeIn:"",timeOut:"",break:"",notes:""};
- if(typeof x==="string")return {status:x,timeIn:"",timeOut:"",break:"",notes:""};
- return {status:x.status||"",timeIn:x.timeIn||"",timeOut:x.timeOut||"",break:x.break||"",notes:x.notes||""};
-}
-function setAttendanceRecord(iso,data){
- const m=getAttendanceMap();
- if(!data || (!data.status&&!data.timeIn&&!data.timeOut&&!data.notes)) delete m[iso];
- else m[iso]={status:data.status||"",timeIn:data.timeIn||"",timeOut:data.timeOut||"",break:data.break||"",notes:data.notes||""};
- localStorage.setItem("bloom55.attendance",JSON.stringify(m));
-}
-function setAttendance(iso,status){
- const r=getAttendanceRecord(iso);
- r.status=status||"";
- setAttendanceRecord(iso,r);
-}
-function attendanceForDate(iso){return getAttendanceRecord(iso).status}
-function attendanceStats(){
- const vals=Object.values(getAttendanceMap()).map(x=>typeof x==="string"?x:(x?.status||"")).filter(Boolean);
- return {present:vals.filter(x=>x==="Present").length,late:vals.filter(x=>x==="Late").length,absent:vals.filter(x=>x==="Absent").length,excused:vals.filter(x=>x==="Excused").length,total:vals.length};
-}
-function getChecklist(id){try{return JSON.parse(localStorage.getItem("bloom55.checklist."+id)||"[]")}catch(e){return []}}
-function setChecklist(id,list){localStorage.setItem("bloom55.checklist."+id,JSON.stringify(list))}
-function getJournal(id){try{return JSON.parse(localStorage.getItem("bloom55.journal."+id)||'{"mood":"","learned":"","challenge":"","timeIn":"","timeOut":"","break":""}')}catch(e){return {mood:"",learned:"",challenge:"",timeIn:"",timeOut:"",break:""}}}
-function setJournal(id,data){localStorage.setItem("bloom55.journal."+id,JSON.stringify(data))}
-const CHECK_ITEMS=["Attend training","Complete assigned activity","Submit requirements","Review lesson","Take notes","Upload evidence"];
-function weekGroups(){const days=trainingDays();const out=[];for(let i=0;i<days.length;i+=5){const arr=days.slice(i,i+5);out.push({week:Math.floor(i/5)+1,days:arr});}return out;}
-function activeWeekNumber(){const today=todayTrainingDay();if(today)return Math.ceil(today.id/5);const next=trainingDays().find(d=>!completed.has(d.id));return next?Math.ceil(next.id/5):11;}
-function getScheduleWeek(){const saved=Number(localStorage.getItem("bloom55.scheduleWeek")||activeWeekNumber());return Math.min(11,Math.max(1,saved));}
-function setScheduleWeek(w){const n=Math.min(11,Math.max(1,Number(w)||1));localStorage.setItem("bloom55.scheduleWeek",String(n));render();}
 function schedule(){
- const weeks=weekGroups();
- const weekNum=getScheduleWeek();
- const w=weeks[weekNum-1];
- const first=w.days[0],last=w.days[w.days.length-1];
- const done=w.days.filter(d=>completed.has(d.id)).length;
- const completedCount=completed.size;
- return `<section class="schedule">
-   <div class="schedule-head">
-     <div class="schedule-title"><div class="head-icon">${icon.cal}</div>Training Schedule</div>
-     <div class="badge">${completedCount}/${TOTAL} Complete</div>
-   </div>
-   
-   <div class="week-summary"><span>Your 55-day training journey</span><b>55 training days</b></div>
-   <div class="week-current">
-     <div class="week-head">
-       <span class="week-icon">${icon.cal}</span>
-       <span><span class="week-name">WEEK ${w.week}</span><span class="week-range"> ${fmt(first.date,false)} – ${fmt(last.date,false)}</span></span>
-       <span class="week-count">${done}/${w.days.length} complete</span>
-     </div>
-     <div class="week-days">
-       ${w.days.map(d=>{
-         const iso=isoDate(d.date),isToday=iso===isoDate(new Date());
-         return `<button class="week-day ${completed.has(d.id)?"done":""} ${isToday?"today":""}" data-day="${d.id}" data-detail="${d.id}">
-           <span class="weekday">${d.date.toLocaleDateString("en-US",{weekday:"short"})}</span>
-           <span class="date-main">${fmt(d.date,true)}</span>
-           <span class="status">${completed.has(d.id)?"✓":""}</span>
-         </button>`;
-       }).join("")}
-     </div>
-   </div>
-   <div class="week-pager">
-     <button type="button" id="prevTrainingWeek" ${weekNum===1?"disabled":""}>‹ Previous</button>
-     <div class="week-pager-label">Week ${weekNum} of ${weeks.length}</div>
-     <button type="button" id="nextTrainingWeek" ${weekNum===weeks.length?"disabled":""}>Next ›</button>
-   </div>
-   <div class="week-note">💡 Tap a training date to view attendance, checklist, journal and attachments.</div>
- </section>`;
+ return `<section class="schedule"><div class="schedule-head"><div class="schedule-title"><div class="head-icon">${icon.cal}</div>Training Schedule</div><div class="badge">Upcoming</div></div><div class="rows">${trainingDays().map(d=>`<button class="row ${completed.has(d.id)?"done":""}" data-day="${d.id}" data-detail="${d.id}"><div class="num">${d.id}</div><div class="date"><b>${d.date.toLocaleDateString("en-US",{weekday:"short"})}, ${d.date.toLocaleDateString("en-US",{month:"short"})}</b> ${d.date.getDate()} <span>${d.date.getFullYear()}</span></div><div class="day-label">Day ${d.id}</div><div class="check"></div></button>`).join("")}</div></section>`;
 }
 function progressPanel(){
- const pct=Math.round(completed.size/TOTAL*100),a=attendanceStats(),attRate=a.total?Math.round((a.present+a.late)/a.total*100):0;
- const hours=weekGroups().flatMap(w=>w.days).map(d=>getJournal(d.id)).reduce((sum,j)=>sum+calcHours(j.timeIn,j.timeOut,j.break),0);
- return `<section class="schedule panel active"><div class="schedule-head"><div class="schedule-title"><div class="head-icon">${icon.chart}</div>Progress</div><div class="badge">${pct}% Complete</div></div><div style="padding:20px">
- <div class="stat-grid v5"><div class="stat v5"><div class="muted">Completed</div><b>${completed.size}</b><span class="muted"> / 55</span></div><div class="stat v5"><div class="muted">Attendance</div><b class="pink">${attRate}%</b><span class="muted"> rate</span></div><div class="stat v5"><div class="muted">Current streak</div><b class="pink">${streak()}</b><span class="muted"> days</span></div><div class="stat v5"><div class="muted">Training hours</div><b>${formatHours(hours)}</b></div></div>
- <div class="report-actions"><button id="openProfile">👤 Profile</button><button id="openReminderSettings">🔔 Reminders</button><button id="openRequirements">📂 Requirements Vault</button><button id="openSupplies">🛒 Supplies & Shopping</button><button id="openAchievements">🏆 Achievements</button><button id="openWeeklySummary">📊 Weekly Summary</button><button class="primary-report" id="printReport">🖨 Training Report</button></div>
- <div class="week-note" style="margin-top:14px">Attendance: ${a.present} present · ${a.late} late · ${a.absent} absent · ${a.excused} excused</div>
- </div></section>`;
+ const pct=Math.round(completed.size/TOTAL*100);
+ const done=[...completed].sort((a,b)=>a-b);
+ return `<section class="schedule panel active"><div class="schedule-head"><div class="schedule-title"><div class="head-icon">${icon.chart}</div>Progress</div><div class="badge">${pct}% Complete</div></div><div style="padding:24px"><div class="stat-grid"><div class="stat"><div class="muted">Completed</div><b>${completed.size}</b><span class="muted"> / 55</span></div><div class="stat"><div class="muted">Current streak</div><b class="pink">${streak()}</b><span class="muted"> days</span></div><div class="stat"><div class="muted">Longest streak</div><b>${longestStreak()}</b><span class="muted"> days</span></div><div class="stat"><div class="muted">Remaining</div><b>${TOTAL-completed.size}</b><span class="muted"> days</span></div></div><div style="margin-top:18px" class="empty-state">${done.length?`Completed days: ${done.join(", ")}`:"No training days completed yet. Tap a circle on the Schedule to start."}</div></div></section>`;
 }
-function calcHours(timeIn,timeOut,breakMin){if(!timeIn||!timeOut)return 0;const [h1,m1]=timeIn.split(":").map(Number),[h2,m2]=timeOut.split(":").map(Number);let mins=(h2*60+m2)-(h1*60+m1)-Number(breakMin||0);return mins>0?mins/60:0}
-function formatHours(h){return Number.isInteger(h)?String(h)+"h":h.toFixed(1)+"h"}
-
 function notesPanel(){
- return `<section class="schedule panel active"><div class="schedule-head"><div class="schedule-title"><div class="head-icon">${icon.note}</div>Notes & Journal</div><div class="badge">Saved locally</div></div><div style="padding:20px"><textarea id="notesBox" placeholder="Write general training notes here...">${escHtml(notes)}</textarea><div style="display:flex;justify-content:flex-end;margin-top:12px"><button class="primary" id="saveNotes">Save Notes</button></div><div class="week-note">Tip: Open a training day from Schedule to keep a dedicated journal, mood, attendance and training hours for that day.</div></div></section>`;
+ return `<section class="schedule panel active"><div class="schedule-head"><div class="schedule-title"><div class="head-icon">${icon.note}</div>Notes</div><div class="badge">Saved locally</div></div><div style="padding:24px"><textarea id="notesBox" placeholder="Write your training notes here...">${notes}</textarea><div style="display:flex;justify-content:flex-end;margin-top:12px"><button class="primary" id="saveNotes">Save Notes</button></div></div></section>`;
 }
 
-function showJournal(id){
- const d=trainingDays().find(x=>x.id===Number(id));if(!d)return;const j=getJournal(id),moods=["😊 Great","🙂 Good","😐 Okay","😕 Difficult","😫 Very difficult"];
- const o=document.getElementById("overlay");o.innerHTML=`<div class="modal"><div class="modal-kicker">Training Journal</div><h3>${fmt(d.date)}</h3><div class="journal-grid"><label class="field-label">Mood<div class="mood-row">${moods.map(x=>`<button type="button" class="mood-btn ${j.mood===x?"active":""}" data-mood="${escHtml(x)}">${x}</button>`).join("")}</div></label><label class="field-label">What did I learn today?<textarea id="jLearned">${escHtml(j.learned)}</textarea></label><label class="field-label">What was challenging?<textarea id="jChallenge">${escHtml(j.challenge)}</textarea></label><div class="hours-grid"><label class="field-label">Time in<input id="jIn" type="time" value="${escHtml(j.timeIn)}"></label><label class="field-label">Time out<input id="jOut" type="time" value="${escHtml(j.timeOut)}"></label></div><label class="field-label">Break (minutes)<input id="jBreak" type="number" min="0" value="${escHtml(j.break||0)}"></label><div class="hours-result" id="hoursResult">Total: ${formatHours(calcHours(j.timeIn,j.timeOut,j.break))}</div></div><div class="modal-actions"><button class="primary" id="saveJournal">Save Journal</button></div></div>`;addModalCloseX(o);o.classList.add("show");let mood=j.mood;o.querySelectorAll("[data-mood]").forEach(b=>b.onclick=()=>{mood=b.dataset.mood;o.querySelectorAll("[data-mood]").forEach(x=>x.classList.toggle("active",x===b));});const update=()=>document.getElementById("hoursResult").textContent="Total: "+formatHours(calcHours(document.getElementById("jIn").value,document.getElementById("jOut").value,document.getElementById("jBreak").value));["jIn","jOut","jBreak"].forEach(x=>document.getElementById(x).oninput=update);document.getElementById("saveJournal").onclick=()=>{setJournal(id,{mood,learned:document.getElementById("jLearned").value,challenge:document.getElementById("jChallenge").value,timeIn:document.getElementById("jIn").value,timeOut:document.getElementById("jOut").value,break:document.getElementById("jBreak").value});o.classList.remove("show");render();};
-}
-function showHours(id){showJournal(id);}
-function achievements(){const items=[['🌱','First Step',completed.size>=1],['🔥','5-Day Streak',longestStreak()>=5],['💪','10-Day Warrior',completed.size>=10],['📚','Study Buddy',weekGroups().flatMap(w=>w.days).filter(d=>localStorage.getItem("bloom55.note."+d.id)).length>=10],['📸','Evidence Keeper',getQuickAdds().filter(x=>x.attachmentName).length>=10],['🏆','Halfway There',completed.size>=28],['👑','TESDA Finisher',completed.size>=55]];const o=document.getElementById("overlay");o.innerHTML=`<div class="modal"><div class="modal-kicker">Achievements</div><h3>🏆 Your Badges</h3><div class="req-list">${items.map(x=>`<div class="req-item" style="opacity:${x[2]?1:.5}"><span style="font-size:24px;flex:0 0 auto">${x[0]}</span><span>${x[1]}<small>${x[2]?"Unlocked":"Locked"}</small></span><b>${x[2]?"✓":"🔒"}</b></div>`).join("")}</div></div>`;addModalCloseX(o);o.classList.add("show");}
-function getReminderSettings(){
- try{return Object.assign({enabled:true,training:true,supplies:true,requirements:true,attendance:true,checklist:true,oncePerDay:false},JSON.parse(localStorage.getItem("bloom55.reminders")||"{}"))}catch(e){return {enabled:true,training:true,supplies:true,requirements:true,attendance:true,checklist:true,oncePerDay:false}}
-}
-function saveReminderSettings(s){localStorage.setItem("bloom55.reminders",JSON.stringify(s));}
-function reminderTodayKey(){return new Date().toISOString().slice(0,10)}
-function reminderSettingsModal(){
- const o=document.getElementById("overlay"),s=getReminderSettings();
- o.innerHTML=`<div class="modal">
-  <div class="modal-kicker">Notifications & prompts</div>
-  <h3>🔔 Reminder Settings</h3>
-  <div class="reminder-toggle-row"><span>Show reminders when app opens<small>Display the smart popup when you visit the app.</small></span><input type="checkbox" id="remEnabled" ${s.enabled?"checked":""}></div>
-  <div class="reminder-toggle-row"><span>Today's training<small>Show the current training day and date.</small></span><input type="checkbox" id="remTraining" ${s.training?"checked":""}></div>
-  <div class="reminder-toggle-row"><span>Attendance & time<small>Remind you about missing attendance or time-in/time-out.</small></span><input type="checkbox" id="remAttendance" ${s.attendance?"checked":""}></div>
-  <div class="reminder-toggle-row"><span>Daily checklist<small>Show incomplete tasks for today's training.</small></span><input type="checkbox" id="remChecklist" ${s.checklist?"checked":""}></div>
-  <div class="reminder-toggle-row"><span>Supplies & shopping<small>Show items you still need to prepare.</small></span><input type="checkbox" id="remSupplies" ${s.supplies?"checked":""}></div>
-  <div class="reminder-toggle-row"><span>Requirements<small>Show pending items in your Requirements Vault.</small></span><input type="checkbox" id="remRequirements" ${s.requirements?"checked":""}></div>
-  <div class="reminder-toggle-row"><span>Only once per day<small>Don't show the popup again after you've dismissed it today.</small></span><input type="checkbox" id="remOnce" ${s.oncePerDay?"checked":""}></div>
-  <div class="modal-actions"><button class="primary" id="saveReminderSettings">Save</button></div>
- </div>`;
- addModalCloseX(o);o.classList.add("show");
- document.getElementById("saveReminderSettings").onclick=()=>{
-  saveReminderSettings({
-   enabled:document.getElementById("remEnabled").checked,
-   training:document.getElementById("remTraining").checked,
-   attendance:document.getElementById("remAttendance").checked,
-   checklist:document.getElementById("remChecklist").checked,
-   supplies:document.getElementById("remSupplies").checked,
-   requirements:document.getElementById("remRequirements").checked,
-   oncePerDay:document.getElementById("remOnce").checked
-  });
-  o.classList.remove("show");
- };
-}
-function getTodayTraining(){
- const days=trainingDays(),today=new Date();
- const iso=today.toISOString().slice(0,10);
- return days.find(d=>isoDate(d.date)===iso)||null;
-}
-function getTodayChecklistStatus(id){
- const raw=localStorage.getItem("bloom55.checklist."+id);
- if(!raw)return {done:0,total:0};
- try{
-  const arr=JSON.parse(raw);
-  if(Array.isArray(arr))return {done:arr.filter(x=>x.done||x===true).length,total:arr.length};
- }catch(e){}
- return {done:0,total:0};
-}
-function getSuppliesSummary(){
- try{
-  const a=JSON.parse(localStorage.getItem("bloom55.supplies")||"[]");
-  if(!Array.isArray(a)||!a.length)return {ready:0,total:0};
-  return {ready:a.filter(x=>x.done).length,total:a.length};
- }catch(e){return {ready:0,total:0}}
-}
-function getRequirementsSummary(){
- try{
-  const a=JSON.parse(localStorage.getItem("bloom55.requirements")||"[]");
-  if(!Array.isArray(a)||!a.length)return {done:0,total:0};
-  return {done:a.filter(x=>typeof x==="string"?false:x.done).length,total:a.length};
- }catch(e){return {done:0,total:0}}
-}
-function buildSmartReminder(){
- const s=getReminderSettings();
- if(!s.enabled)return null;
- const d=getTodayTraining(),name=profileDisplayName(),now=new Date();
- const dateLabel=now.toLocaleDateString(undefined,{weekday:"long",month:"long",day:"numeric",year:"numeric"});
- const bullets=[];
- if(s.training){
-  if(d)bullets.push(`📅 Today is <b>Training Day ${d.id}</b> of 55.`);
-  else bullets.push("📅 There is no scheduled training session today.");
- }
- if(d && s.attendance){
-  const a=getAttendanceRecord(isoDate(d.date));
-  if(!a.status)bullets.push("🟢 <b>Attendance</b> hasn't been recorded yet.");
-  else if(!a.timeIn)bullets.push(`⏰ You're marked <b>${escHtml(a.status)}</b>, but time-in is still missing.`);
-  else if(!a.timeOut && a.status!=="Absent" && a.status!=="Excused")bullets.push(`⏰ Time-in recorded at <b>${escHtml(a.timeIn)}</b>; don't forget to record your time-out.`);
- }
- if(d && s.checklist){
-  const c=getTodayChecklistStatus(d.id);
-  if(c.total&&c.done<c.total)bullets.push(`📝 <b>${c.total-c.done} checklist item${c.total-c.done===1?"":"s"}</b> still incomplete.`);
- }
- if(s.supplies){
-  const x=getSuppliesSummary();
-  if(x.total&&x.ready<x.total)bullets.push(`🛒 <b>${x.total-x.ready} supply item${x.total-x.ready===1?"":"s"}</b> still need to be bought or prepared.`);
- }
- if(s.requirements){
-  const x=getRequirementsSummary();
-  if(x.total&&x.done<x.total)bullets.push(`📂 <b>${x.total-x.done} requirement${x.total-x.done===1?"":"s"}</b> still pending.`);
- }
- if(!bullets.length)bullets.push("✨ Everything looks good. You're all caught up!");
- return {name,dateLabel,bullets,d};
-}
-function showSmartReminder(){
- const s=getReminderSettings();
- if(!s.enabled)return;
- const today=reminderTodayKey();
- if(s.oncePerDay && localStorage.getItem("bloom55.reminderShown")===today)return;
- const data=buildSmartReminder();if(!data)return;
- const o=document.getElementById("overlay");
- o.innerHTML=`<div class="modal">
-  <div class="smart-reminder">
-   <div class="smart-reminder-hero"><div class="smart-reminder-icon">🌸</div><div><h3>${data.d?"Good morning, "+escHtml(data.name)+"!":"Welcome back, "+escHtml(data.name)+"!"}</h3><div class="smart-reminder-date">${escHtml(data.dateLabel)}</div></div></div>
-   <div class="smart-reminder-card"><b>${data.d?"Today's training":"Your tracker"}</b><ul class="smart-reminder-list">${data.bullets.map(x=>`<li>${x}</li>`).join("")}</ul></div>
-   <div class="smart-reminder-actions">${data.d?'<button class="primary" id="remViewToday">View Today</button>':""}<button class="secondary" id="remDismiss">Dismiss</button></div>
-  </div>
- </div>`;
- addModalCloseX(o);o.classList.add("show");
- const dismiss=()=>{if(getReminderSettings().oncePerDay)localStorage.setItem("bloom55.reminderShown",today);o.classList.remove("show");};
- document.getElementById("remDismiss").onclick=dismiss;
- document.getElementById("remViewToday")?.addEventListener("click",()=>{
-   dismiss();
-   setTimeout(()=>{if(data.d)showDayDetail(data.d.id)},100);
- });
-}
-function getProfile(){
- try{return JSON.parse(localStorage.getItem("bloom55.profile")||"{}")}catch(e){return {}}
-}
-function saveProfile(p){localStorage.setItem("bloom55.profile",JSON.stringify(p));}
-function profileDisplayName(){
- const p=getProfile();
- return (p.name||"Trainee").trim()||"Trainee";
-}
-function profileAvatarMarkup(p,cls="profile-avatar-lg"){
- return p.photo ? `<img class="${cls}" src="${p.photo}" alt="Profile photo">` : `<div class="${cls}">${escHtml((p.name||"T").trim().charAt(0).toUpperCase())}</div>`;
-}
-function profileSettings(){
- const o=document.getElementById("overlay"),p=getProfile();
- o.innerHTML=`<div class="modal">
-  <div class="modal-kicker">Personalize your tracker</div>
-  <h3>👤 User Profile</h3>
-  <div class="profile-card">
-   ${profileAvatarMarkup(p)}
-   <div class="profile-meta"><h4>${escHtml(p.name||"Your Name")}</h4><p>${escHtml(p.program||"Housekeeping NC II")} · ${escHtml(p.center||"Training Center")}</p></div>
-  </div>
-  <div class="profile-form">
-   <label class="field-label">Full name<input id="profileName" value="${escHtml(p.name||"")}" placeholder="Your name"></label>
-   <div class="profile-form-grid">
-    <label class="field-label">Training program<input id="profileProgram" value="${escHtml(p.program||"Housekeeping NC II")}"></label>
-    <label class="field-label">Training center<input id="profileCenter" value="${escHtml(p.center||"")}" placeholder="Training center"></label>
-   </div>
-   <div class="profile-form-grid">
-    <label class="field-label">Start date<input id="profileStart" type="date" value="${escHtml(p.start||"2026-08-10")}"></label>
-    <label class="field-label">Target completion<input id="profileTarget" type="date" value="${escHtml(p.target||"")}"></label>
-   </div>
-   <label class="field-label">Contact number (optional)<input id="profileContact" value="${escHtml(p.contact||"")}"></label>
-   <label class="field-label">Emergency contact (optional)<input id="profileEmergency" value="${escHtml(p.emergency||"")}"></label>
-   <label class="field-label">Profile photo<input id="profilePhoto" class="profile-photo-input" type="file" accept="image/*"></label>
-   <div class="profile-actions"><button type="button" id="removeProfilePhoto">Remove photo</button></div>
-  </div>
-  <div class="modal-actions"><button class="primary" id="saveProfile">Save Profile</button></div>
- </div>`;
- addModalCloseX(o);o.classList.add("show");
-
- document.getElementById("removeProfilePhoto").onclick=()=>{
-   p.photo=""; saveProfile(p); profileSettings();
- };
- document.getElementById("saveProfile").onclick=async()=>{
-   const file=document.getElementById("profilePhoto").files?.[0];
-   let photo=p.photo||"";
-   if(file){
-     if(file.size>6*1024*1024){showModal("Photo too large","Please choose a profile photo smaller than 6 MB.");return;}
-     try{photo=(await compressImageFile(file)).data}catch(e){showModal("Photo error","The selected image could not be processed.");return;}
-   }
-   saveProfile({
-     name:document.getElementById("profileName").value.trim(),
-     program:document.getElementById("profileProgram").value.trim()||"Housekeeping NC II",
-     center:document.getElementById("profileCenter").value.trim(),
-     start:document.getElementById("profileStart").value,
-     target:document.getElementById("profileTarget").value,
-     contact:document.getElementById("profileContact").value.trim(),
-     emergency:document.getElementById("profileEmergency").value.trim(),
-     photo
-   });
-   o.classList.remove("show");render();
- };
-}
-function finalCelebration(){
- const p=getProfile(),name=profileDisplayName(),completedCount=completed.size;
- const days=trainingDays(),first=days[0]?.date,last=days[days.length-1]?.date;
- const att=attendanceStats();
- const hours=days.reduce((sum,d)=>{const r=getAttendanceRecord(isoDate(d.date));return sum+calcHours(r.timeIn,r.timeOut,r.break)},0);
- const fmtDate=x=>x?new Date(x).toLocaleDateString(undefined,{month:"long",day:"numeric",year:"numeric"}):"—";
- const o=document.getElementById("overlay");
- o.innerHTML=`<div class="modal">
-  <div class="celebrate">
-   <div class="confetti">🎉 ✨ 🎊 🌸 ✨ 🎉</div>
-   <div class="celebrate-icon">🏆</div>
-   <h2>YOU DID IT!</h2>
-   <p>Congratulations, <b>${escHtml(name)}</b>!</p>
-   <p>You completed all <b>55 training days</b> of your Attendance Tracker journey.</p>
-   <div class="celebrate-card">
-    ${profileAvatarMarkup(p)}
-    <p><strong>${escHtml(name)}</strong></p>
-    <p>${escHtml(p.program||"Housekeeping NC II")}</p>
-    <p>${escHtml(p.center||"Training Center")}</p>
-    <p>${fmtDate(first)} — ${fmtDate(last)}</p>
-   </div>
-   <div class="celebrate-stats">
-    <div class="celebrate-stat"><b>${completedCount}/55</b><span>Training Days</span></div>
-    <div class="celebrate-stat"><b>${att.present}</b><span>Present</span></div>
-    <div class="celebrate-stat"><b>${formatHours(hours)}</b><span>Training Hours</span></div>
-   </div>
-   <p>Every weekday brought you one step closer. 💗</p>
-  </div>
-  <div class="modal-actions"><button class="primary" id="closeCelebration">Continue 🎉</button></div>
- </div>`;
- addModalCloseX(o);o.classList.add("show");
- document.getElementById("closeCelebration").onclick=()=>o.classList.remove("show");
-}
-function suppliesChecklist(){
- const key="bloom55.supplies";
- const defaults=[
-  {name:"Rubber gloves",category:"Cleaning Supplies",qty:"1 pair",price:"",done:false},
-  {name:"Face mask",category:"Cleaning Supplies",qty:"10",price:"",done:false},
-  {name:"Cleaning cloth",category:"Cleaning Supplies",qty:"2",price:"",done:false},
-  {name:"Sponge",category:"Cleaning Supplies",qty:"2",price:"",done:false},
-  {name:"Scrub brush",category:"Cleaning Supplies",qty:"1",price:"",done:false},
-  {name:"Housekeeping uniform",category:"Uniform & Personal Items",qty:"1",price:"",done:false},
-  {name:"Black socks",category:"Uniform & Personal Items",qty:"2 pairs",price:"",done:false},
-  {name:"Black doll shoes",category:"Uniform & Personal Items",qty:"1 pair",price:"",done:false},
-  {name:"Hairnet / hair restraint",category:"Uniform & Personal Items",qty:"1",price:"",done:false},
-  {name:"Nameplate / ID",category:"Uniform & Personal Items",qty:"1",price:"",done:false},
-  {name:"Notebook",category:"Training Essentials",qty:"1",price:"",done:false},
-  {name:"Ballpen",category:"Training Essentials",qty:"2",price:"",done:false},
-  {name:"Folder",category:"Training Essentials",qty:"1",price:"",done:false},
-  {name:"Water bottle",category:"Training Essentials",qty:"1",price:"",done:false}
- ];
- let items;
- try{items=JSON.parse(localStorage.getItem(key)||"null")}catch(e){items=null}
- if(!Array.isArray(items)||!items.length)items=defaults;
- items=items.map(x=>({name:String(x.name||"Item"),category:String(x.category||"Other"),qty:String(x.qty||"1"),price:String(x.price||""),done:!!x.done}));
-
- const o=document.getElementById("overlay");
-
- const draw=()=>{
-  const done=items.filter(x=>x.done).length,total=items.length,pct=total?Math.round(done/total*100):0;
-  const cats=[...new Set(items.map(x=>x.category))];
-  const groups=cats.map(cat=>{
-    const rows=items.map((x,i)=>({x,i})).filter(z=>z.x.category===cat);
-    return `<div class="supply-group"><div class="supply-group-title">${escHtml(cat)}</div>${
-      rows.map(({x,i})=>`<div class="supply-row">
-        <input type="checkbox" data-supply-check="${i}" ${x.done?"checked":""} aria-label="Mark ${escHtml(x.name)} as ready">
-        <div><div class="supply-name" data-supply-edit="${i}">${escHtml(x.name)}</div><div class="supply-meta">${escHtml(x.qty)}</div></div>
-        <div class="supply-price">${x.price?escHtml(x.price):""}</div>
-        <button type="button" class="supply-edit" data-supply-edit="${i}">Edit</button>
-        <button type="button" class="supply-delete" data-supply-delete="${i}" aria-label="Remove item">×</button>
-      </div>`).join("")
-    }</div>`;
-  }).join("");
-
-  o.innerHTML=`<div class="modal">
-    <div class="modal-kicker">Shopping & Preparation</div>
-    <h3>🛒 Supplies & Shopping</h3>
-    <p>Keep track of what you need to buy or prepare for your TESDA training.</p>
-    <div class="supplies-summary">${done} / ${total} items ready · ${pct}% prepared<div class="supplies-progress"><span style="width:${pct}%"></span></div></div>
-    ${groups||'<div class="supply-empty">Your checklist is empty.</div>'}
-    <button type="button" class="supply-add" id="addSupply">＋ Add Item</button>
-    <div id="supplyForm" class="supply-form" hidden>
-      <div class="supply-form-grid">
-        <label class="field-label">Item<input id="supplyName" placeholder="e.g. White cleaning cloth"></label>
-        <label class="field-label">Category<select id="supplyCategory"><option>Cleaning Supplies</option><option>Uniform & Personal Items</option><option>Training Essentials</option><option>Other</option></select></label>
-      </div>
-      <div class="supply-form-grid">
-        <label class="field-label">Quantity<input id="supplyQty" placeholder="e.g. 2 pairs"></label>
-        <label class="field-label">Optional price<input id="supplyPrice" placeholder="e.g. ₱150"></label>
-      </div>
-      <div class="modal-actions"><button type="button" class="primary" id="saveSupply">Add to Checklist</button></div>
-    </div>
-    <div class="modal-actions"><button type="button" class="secondary" id="saveSupplies">Save</button></div>
-  </div>`;
-  addModalCloseX(o);o.classList.add("show");
-
-  o.querySelectorAll("[data-supply-check]").forEach(c=>c.onchange=()=>{
-    items[Number(c.dataset.supplyCheck)].done=c.checked;
-    draw();
-  });
-  o.querySelectorAll("[data-supply-delete]").forEach(b=>b.onclick=()=>{
-    const i=Number(b.dataset.supplyDelete);
-    if(items[i] && confirm(`Remove "${items[i].name}" from your supplies checklist?`)){
-      items.splice(i,1);draw();
-    }
-  });
-  o.querySelectorAll("[data-supply-edit]").forEach(b=>b.onclick=()=>{
-    const i=Number(b.dataset.supplyEdit);
-    const x=items[i]; if(!x)return;
-    const name=prompt("Item name:",x.name); if(name===null||!name.trim())return;
-    const qty=prompt("Quantity:",x.qty); if(qty===null)return;
-    const price=prompt("Optional price:",x.price); if(price===null)return;
-    x.name=name.trim();x.qty=qty.trim()||"1";x.price=price.trim();draw();
-  });
-
-  document.getElementById("addSupply").onclick=()=>{
-    const f=document.getElementById("supplyForm");
-    f.hidden=!f.hidden;
-    if(!f.hidden)document.getElementById("supplyName").focus();
-  };
-  document.getElementById("saveSupply").onclick=()=>{
-    const name=document.getElementById("supplyName").value.trim();
-    if(!name){alert("Please enter an item name.");return;}
-    items.push({
-      name,
-      category:document.getElementById("supplyCategory").value,
-      qty:document.getElementById("supplyQty").value.trim()||"1",
-      price:document.getElementById("supplyPrice").value.trim(),
-      done:false
-    });
-    draw();
-  };
-  document.getElementById("saveSupplies").onclick=()=>{
-    localStorage.setItem(key,JSON.stringify(items));
-    o.classList.remove("show");
-  };
- };
- draw();
-}
-
-function requirementsVault(){
- const key="bloom55.requirements";
- const defaults=["Valid ID / personal documents","Training enrollment requirements","Training uniform / materials","Activities / assignments","Assessment requirements","Certificates / completion documents"];
- let req;
- try{req=JSON.parse(localStorage.getItem(key)||"null")}catch(e){req=null}
- if(!Array.isArray(req) || !req.length) req=defaults.map(x=>({name:x,done:false}));
- req=req.map(x=>typeof x==="string"?{name:x,done:false}:{name:String(x.name||"Requirement"),done:!!x.done});
-
- const o=document.getElementById("overlay");
-
- const draw=()=>{
-  const rows=req.length ? req.map((x,i)=>`
-    <div class="req-item">
-      <input type="checkbox" data-req="${i}" ${x.done?"checked":""} aria-label="Complete ${escHtml(x.name)}">
-      <span class="req-name" data-edit="${i}" title="Tap to edit">${escHtml(x.name)}</span>
-      <small>${x.done?"Complete":"Pending"}</small>
-      <button type="button" class="req-delete" data-delete="${i}" aria-label="Remove requirement">×</button>
-    </div>`).join("") :
-    `<div class="req-empty">No requirements yet.<br>Add your first checklist item below.</div>`;
-
-  o.innerHTML=`<div class="modal">
-    <div class="modal-kicker">Document Organizer</div>
-    <h3>📂 My Requirements</h3>
-    <div class="req-toolbar">
-      <small>Add, edit, remove, and check off your own requirements.</small>
-      <button type="button" class="req-add" id="addReq">＋ Add</button>
-    </div>
-    <div class="req-list">${rows}</div>
-    <div class="modal-actions"><button class="primary" id="saveReq">Save</button></div>
-  </div>`;
-  addModalCloseX(o);
-  o.classList.add("show");
-
-  o.querySelectorAll("[data-req]").forEach(c=>c.onchange=()=>{
-    req[Number(c.dataset.req)].done=c.checked;
-    const small=c.closest(".req-item")?.querySelector("small");
-    if(small) small.textContent=c.checked?"Complete":"Pending";
-  });
-
-  o.querySelectorAll("[data-delete]").forEach(btn=>btn.onclick=()=>{
-    const i=Number(btn.dataset.delete);
-    if(!req[i]) return;
-    if(confirm(`Remove "${req[i].name}" from your checklist?`)){
-      req.splice(i,1);
-      draw();
-    }
-  });
-
-  o.querySelectorAll("[data-edit]").forEach(el=>el.onclick=()=>{
-    const i=Number(el.dataset.edit);
-    const edited=prompt("Edit requirement name:",req[i].name);
-    if(edited!==null && edited.trim()){
-      req[i].name=edited.trim();
-      draw();
-    }
-  });
-
-  document.getElementById("addReq").onclick=()=>{
-    const name=prompt("Enter the new requirement:");
-    if(name!==null && name.trim()){
-      req.push({name:name.trim(),done:false});
-      draw();
-      const last=o.querySelector(`[data-edit="${req.length-1}"]`);
-      if(last) last.scrollIntoView({block:"nearest"});
-    }
-  };
-
-  document.getElementById("saveReq").onclick=()=>{
-    localStorage.setItem(key,JSON.stringify(req));
-    o.classList.remove("show");
-  };
- };
-
- draw();
-}
-
-function weeklySummary(){const o=document.getElementById("overlay"),weeks=weekGroups();o.innerHTML=`<div class="modal"><div class="modal-kicker">Weekly Summary</div><h3>📊 Training Weeks</h3><div class="req-list">${weeks.map(w=>{const done=w.days.filter(d=>completed.has(d.id)).length,att=w.days.filter(d=>attendanceForDate(isoDate(d.date))==="Present").length;return `<div class="req-item"><span>Week ${w.week}<small>${fmt(w.days[0].date,false)} – ${fmt(w.days[w.days.length-1].date,false)}</small></span><b>${done}/5</b><small>${att} present</small></div>`}).join("")}</div></div>`;addModalCloseX(o);o.classList.add("show");}
-function printTrainingReport(){const a=attendanceStats(),hours=weekGroups().flatMap(w=>w.days).reduce((s,d)=>s+calcHours(getJournal(d.id).timeIn,getJournal(d.id).timeOut,getJournal(d.id).break),0),rows=weekGroups().map(w=>{const done=w.days.filter(d=>completed.has(d.id)).length;return `<tr><td>Week ${w.week}</td><td>${fmt(w.days[0].date,false)} – ${fmt(w.days[w.days.length-1].date,false)}</td><td>${done}/5</td></tr>`}).join("");const win=window.open("","_blank");if(!win){showModal("Pop-up blocked","Allow pop-ups to print your training report.");return;}win.document.write(`<!doctype html><html><head><title>Attendance Training Report</title><style>body{font-family:Arial,sans-serif;padding:30px;color:#222}h1{color:#d63f70}table{width:100%;border-collapse:collapse;margin-top:20px}th,td{padding:9px;border:1px solid #ddd;text-align:left}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.box{padding:12px;border:1px solid #ddd;border-radius:10px}.muted{color:#666}@media print{button{display:none}}</style></head><body><h1>Attendance Training Report</h1><p><b>Trainee:</b> ${escHtml(profile.name||"Trainee")}<br><b>Program:</b> ${escHtml(profile.role||"Housekeeping NC II Trainee")}<br><b>Training Period:</b> Aug 10 – Oct 23, 2026</p><div class="stats"><div class="box"><b>${completed.size}/55</b><br>Completed</div><div class="box"><b>${a.present}</b><br>Present</div><div class="box"><b>${a.late}</b><br>Late</div><div class="box"><b>${formatHours(hours)}</b><br>Training Hours</div></div><table><thead><tr><th>Week</th><th>Dates</th><th>Completed</th></tr></thead><tbody>${rows}</tbody></table><p class="muted">Generated by Attendance Tracker on ${new Date().toLocaleString()}</p><button onclick="window.print()">Print / Save as PDF</button></body></html>`);win.document.close();}
 function getQuickAdds(){
  try{return JSON.parse(localStorage.getItem("bloom55.quickAdds")||"[]")}catch(e){return []}
 }
@@ -1339,7 +475,7 @@ function openCalendarDate(iso){
      <div class="calendar-entry-type">${entryLabel(x.type)}</div>
      <b>${escHtml(x.title||entryLabel(x.type))}</b>
      ${x.value?`<small>${escHtml(x.value)}</small>`:""}
-     ${x.attachmentName?`<a class="calendar-entry-attachment" href="${x.attachmentData||"#"}" ${x.attachmentData?`download="${escHtml(x.attachmentName)}" target="_blank"`:``}>📎 ${escHtml(x.attachmentName)}</a>`:""}
+     ${x.attachmentName?`<small>📎 ${escHtml(x.attachmentName)}</small>`:""}
      ${x._schedule?"<small>This date is excluded from the 55 training-day count.</small>":""}
      ${!x._schedule?`<div class="entry-actions"><button type="button" class="entry-edit" data-entry-index="${i}">Edit</button><button type="button" class="entry-delete" data-entry-index="${i}">Remove</button></div>`:""}
     </div>
@@ -1356,7 +492,7 @@ function openCalendarDate(iso){
    <button type="button" class="primary" id="addCalendarDate">＋ Add to this date</button>
   </div>
  </div>`;
- addModalCloseX(o);o.classList.add("show");
+ o.classList.add("show");
  document.getElementById("closeCalendarDate").onclick=()=>o.classList.remove("show");
  document.getElementById("addCalendarDate").onclick=()=>{o.classList.remove("show");showQuickAddForm("activity",iso);};
  const pause=document.getElementById("pauseTrainingDate");
@@ -1388,7 +524,7 @@ function showEditDayNote(dayId,iso){
    <button type="button" class="primary" id="saveEditDayNote">Save Changes</button>
   </div>
  </div>`;
- addModalCloseX(o);o.classList.add("show");
+ o.classList.add("show");
  document.getElementById("cancelEditDayNote").onclick=()=>openCalendarDate(iso);
  document.getElementById("saveEditDayNote").onclick=()=>{
    const value=document.getElementById("editDayNote").value;
@@ -1422,7 +558,7 @@ function showEditQuickAdd(id,iso){
  }else{
    fields+=`<label class="field-label">Title<input id="editQaTitle" value="${escHtml(item.title||"")}"></label>
    <label class="field-label">Details<textarea id="editQaValue">${escHtml(item.value||"")}</textarea></label>
-   <label class="field-label">Attachment / Photo<input id="editQaAttachment" class="file-input" type="file" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv"></label>`;
+   <label class="field-label">Attachment<input id="editQaAttachment" value="${escHtml(item.attachmentName||"")}"></label>`;
  }
  o.innerHTML=`<div class="modal">
   <div class="modal-kicker">Edit ${entryLabel(item.type)}</div>
@@ -1433,9 +569,24 @@ function showEditQuickAdd(id,iso){
    <button type="button" class="primary" id="saveEditQa">Save Changes</button>
   </div>
  </div>`;
- addModalCloseX(o);o.classList.add("show");
+ o.classList.add("show");
  document.getElementById("cancelEditQa").onclick=()=>openCalendarDate(iso);
- document.getElementById("saveEditQa").onclick=async()=>{const list=getQuickAdds(),idx=list.findIndex(x=>x.id===id);if(idx<0)return;const file=document.getElementById("editQaAttachment")?.files?.[0]||null;if(file&&file.size>6*1024*1024){showModal("Attachment too large","Please choose a file smaller than 6 MB.");return;}list[idx].date=document.getElementById("editQaDate").value||iso;list[idx].title=document.getElementById("editQaTitle")?.value||list[idx].title;list[idx].value=list[idx].type==="attendance"?((document.getElementById("editQaStatus")?.value||"Present")+(document.getElementById("editQaValue")?.value?" — "+document.getElementById("editQaValue").value:"")):(document.getElementById("editQaValue")?.value||document.getElementById("editQaStatus")?.value||"");if(file){try{const x=file.type.startsWith("image/")?await compressImageFile(file):await fileToDataUrl(file);list[idx].attachmentData=x.data;list[idx].attachmentName=x.name;}catch(e){showModal("Attachment error","The selected file could not be read.");return;}}list[idx].updatedAt=new Date().toISOString();try{localStorage.setItem("bloom55.quickAdds",JSON.stringify(list));}catch(e){showModal("Storage full","Try a smaller attachment.");return;}const newDate=list[idx].date;render();openCalendarDate(newDate);};
+ document.getElementById("saveEditQa").onclick=()=>{
+   const list=getQuickAdds();
+   const idx=list.findIndex(x=>x.id===id);
+   if(idx<0)return;
+   list[idx].date=document.getElementById("editQaDate").value||iso;
+   list[idx].title=document.getElementById("editQaTitle")?.value||list[idx].title;
+   list[idx].value=list[idx].type==="attendance"
+     ? ((document.getElementById("editQaStatus")?.value||"Present") + (document.getElementById("editQaValue")?.value ? " — "+document.getElementById("editQaValue").value : ""))
+     : (document.getElementById("editQaValue")?.value||document.getElementById("editQaStatus")?.value||"");
+   list[idx].attachmentName=document.getElementById("editQaAttachment")?.value||"";
+   list[idx].updatedAt=new Date().toISOString();
+   localStorage.setItem("bloom55.quickAdds",JSON.stringify(list));
+   const newDate=list[idx].date;
+   render();
+   openCalendarDate(newDate);
+ };
 }
 
 function removeQuickAdd(id,iso){
@@ -1481,87 +632,43 @@ function morePanel(){
  return `<section class="schedule panel active"><div class="schedule-head"><div class="schedule-title"><div class="head-icon">${icon.more}</div>More</div></div><div style="padding:24px"><div class="stat-grid"><button class="stat" id="exportBtn" style="text-align:left;cursor:pointer"><b style="font-size:20px">Export backup</b><div class="muted">Save your progress as JSON.</div></button><button class="stat" id="resetBtn" style="text-align:left;cursor:pointer"><b style="font-size:20px">Reset progress</b><div class="muted">Clear completed days and notes.</div></button><div class="stat"><b style="font-size:20px">Bloom55</b><div class="muted">55 Monday-Friday training days (Saturday and Sunday excluded).</div></div></div></div></section>`;
 }
 function nav(){
- const items=[["Schedule",icon.cal],["Progress",icon.chart],["Notes",icon.note],["Calendar",icon.cal]];
+ const items=[["Schedule",icon.cal],["Progress",icon.chart],["Notes",icon.note],["Calendar",icon.cal],["More",icon.more]];
  return `<nav class="bottom"><div class="bottom-inner">${items.map(([n,i])=>`<button class="nav-btn ${active===n?"active":""}" data-nav="${n}">${i}<span>${n}</span></button>`).join("")}</div></nav>`;
 }
 function showDayDetail(id){
  const d=trainingDays().find(x=>x.id===Number(id));
  if(!d)return;
- const done=completed.has(d.id),iso=isoDate(d.date),saved=calendarEntriesForDate(iso);
- const a=getAttendanceRecord(iso);
- const logged=saved.length?`<div class="day-logged"><b>Saved items</b>${saved.map(x=>`<div class="day-log-row"><span>${entryIcon(x.type)}</span><div><b>${escHtml(x.title||entryLabel(x.type))}</b>${x.value?`<small>${escHtml(x.value)}</small>`:""}</div></div>`).join("")}</div>`:"";
+ const done=completed.has(d.id);
+ const iso=isoDate(d.date);
+ const saved=calendarEntriesForDate(iso);
  const o=document.getElementById("overlay");
+ const logged=saved.length?`<div class="day-logged"><b>Already saved for this date</b>${saved.map(x=>`<div class="day-log-row"><span>${entryIcon(x.type)}</span><div><b>${escHtml(x.title||entryLabel(x.type))}</b>${x.value?`<small>${escHtml(x.value)}</small>`:""}</div></div>`).join("")}</div>`:"";
  o.innerHTML=`<div class="modal">
   <h3>Day ${d.id} · ${fmt(d.date,false)}</h3>
-  <p>${done?"This training day is marked complete.":"Record your attendance and training hours for this day."}</p>
-  <div class="attendance-section">
-   <div class="attendance-section-title">Attendance status</div>
-   <div class="attendance-status-grid">${["Present","Late","Absent","Excused"].map(s=>`<button type="button" class="attendance-status-btn ${a.status===s?"active":""}" data-day-status="${s}">${s}</button>`).join("")}</div>
-   <div class="time-grid">
-    <label class="field-label">Time in<input id="dayTimeIn" type="time" value="${escHtml(a.timeIn)}"></label>
-    <label class="field-label">Time out<input id="dayTimeOut" type="time" value="${escHtml(a.timeOut)}"></label>
-   </div>
-   <div class="time-actions">
-    <button type="button" class="time-now" id="timeInNow">⏱ Time in now</button>
-    <button type="button" class="time-now" id="timeOutNow">⏱ Time out now</button>
-   </div>
-   <label class="field-label" style="margin-top:10px">Break (minutes)<input id="dayBreak" type="number" min="0" value="${escHtml(a.break||0)}"></label>
-   <label class="field-label" style="margin-top:10px">Attendance note<textarea id="attendanceNote" placeholder="Optional reason or note...">${escHtml(a.notes||"")}</textarea></label>
-   <div class="attendance-hours" id="dayHours">Total training time: ${formatHours(calcHours(a.timeIn,a.timeOut,a.break))}</div>
-  </div>
+  <p>${done?"This training day is marked complete.":"Plan your session, then mark this training day complete when you finish."}</p>
   ${logged}
-  <textarea id="dayNote" placeholder="Add a general note for Day ${d.id}...">${escHtml(localStorage.getItem("bloom55.note."+d.id)||"")}</textarea>
+  <textarea id="dayNote" placeholder="Add a note for Day ${d.id}...">${escHtml(localStorage.getItem("bloom55.note."+d.id)||"")}</textarea>
   <div class="modal-actions">
-   <button class="primary" id="saveDay">Save</button>
-   <button class="secondary" id="toggleDay">${done?"Mark Incomplete":"Mark Complete"}</button>
+   <button class="secondary" id="closeDay">Close</button>
+   <button class="primary" id="saveDay">Save Note</button>
+   <button class="primary" id="toggleDay">${done?"Mark Incomplete":"Mark Complete"}</button>
   </div>
  </div>`;
- addModalCloseX(o);o.classList.add("show");
-
- let status=a.status;
- o.querySelectorAll("[data-day-status]").forEach(b=>b.onclick=()=>{
-   status=b.dataset.dayStatus;
-   o.querySelectorAll("[data-day-status]").forEach(x=>x.classList.toggle("active",x===b));
- });
-
- const updateHours=()=>{
-   const ti=document.getElementById("dayTimeIn").value,to=document.getElementById("dayTimeOut").value,br=document.getElementById("dayBreak").value;
-   document.getElementById("dayHours").textContent="Total training time: "+formatHours(calcHours(ti,to,br));
- };
- ["dayTimeIn","dayTimeOut","dayBreak"].forEach(x=>document.getElementById(x).oninput=updateHours);
-
- const nowTime=()=>{const n=new Date();return `${String(n.getHours()).padStart(2,"0")}:${String(n.getMinutes()).padStart(2,"0")}`};
- document.getElementById("timeInNow").onclick=()=>{document.getElementById("dayTimeIn").value=nowTime();updateHours();};
- document.getElementById("timeOutNow").onclick=()=>{document.getElementById("dayTimeOut").value=nowTime();updateHours();};
-
- const saveAll=(completeState=null)=>{
-   const rec={status,timeIn:document.getElementById("dayTimeIn").value,timeOut:document.getElementById("dayTimeOut").value,break:document.getElementById("dayBreak").value,notes:document.getElementById("attendanceNote").value};
-   setAttendanceRecord(iso,rec);
+ o.classList.add("show");
+ document.getElementById("closeDay").onclick=()=>o.classList.remove("show");
+ document.getElementById("saveDay").onclick=()=>{
    localStorage.setItem("bloom55.note."+d.id,document.getElementById("dayNote").value);
-   if(completeState!==null){
-     if(completeState)completed.add(d.id);else completed.delete(d.id);
-     save();
-   }else localStorage.setItem(KEY,JSON.stringify([...completed].sort((a,b)=>a-b)));
-   o.classList.remove("show");render();
-   if(completed.size===55 && completeState===true) setTimeout(finalCelebration,250);
+   o.classList.remove("show");
+   render();
+   if(active==="Calendar")openCalendarDate(iso);
+   else showModal("Note saved","Your note will now appear when you tap this date in Calendar.");
  };
- document.getElementById("saveDay").onclick=()=>saveAll(null);
- document.getElementById("toggleDay").onclick=()=>saveAll(!done);
+ document.getElementById("toggleDay").onclick=()=>{
+   localStorage.setItem("bloom55.note."+d.id,document.getElementById("dayNote").value);
+   if(completed.has(d.id))completed.delete(d.id);else completed.add(d.id);
+   save();o.classList.remove("show");render();
+ };
 }
-
-function addModalCloseX(o){
-  const modal=o?.querySelector?.('.modal');
-  if(!modal || modal.querySelector('.modal-x')) return;
-  const x=document.createElement('button');
-  x.type='button';
-  x.className='modal-x';
-  x.setAttribute('aria-label','Close');
-  x.title='Close';
-  x.textContent='×';
-  x.onclick=()=>o.classList.remove('show');
-  modal.prepend(x);
-}
-
 function closeQuickAdd(){
  const m=document.getElementById("quickAdd"), b=document.getElementById("fab");
  if(m){m.classList.remove("show");m.setAttribute("aria-hidden","true");}
@@ -1581,46 +688,27 @@ function showQuickAddForm(type,presetDate=null){
  const dateValue=presetDate||isoDate(new Date());
  let fields=`<label class="field-label">Date<input id="qaDate" type="date" value="${dateValue}"></label>`;
  if(type==="attendance"){
-   const existing=getAttendanceRecord(dateValue);
-   fields+=`<label class="field-label">Status<select id="qaStatus"><option ${existing.status==="Present"?"selected":""}>Present</option><option ${existing.status==="Late"?"selected":""}>Late</option><option ${existing.status==="Absent"?"selected":""}>Absent</option><option ${existing.status==="Excused"?"selected":""}>Excused</option></select></label>
-   <div class="time-grid"><label class="field-label">Time in<input id="qaTimeIn" type="time" value="${escHtml(existing.timeIn)}"></label><label class="field-label">Time out<input id="qaTimeOut" type="time" value="${escHtml(existing.timeOut)}"></label></div>
-   <label class="field-label">Break (minutes)<input id="qaBreak" type="number" min="0" value="${escHtml(existing.break||0)}"></label>
-   <div class="attendance-hours" id="qaHours">Total training time: ${formatHours(calcHours(existing.timeIn,existing.timeOut,existing.break))}</div>
-   <label class="field-label">Notes<textarea id="qaValue" placeholder="Optional attendance note"></textarea></label>`;
+   fields+=`<label class="field-label">Status<select id="qaStatus"><option>Present</option><option>Late</option><option>Absent</option><option>Excused</option></select></label><label class="field-label">Notes<textarea id="qaValue" placeholder="Optional attendance note"></textarea></label>`;
  }else if(type==="date"){
    fields+=`<label class="field-label">Title<input id="qaTitle" placeholder="e.g. Assessment / deadline / event"></label><label class="field-label">Notes<textarea id="qaValue" placeholder="Optional details"></textarea></label>`;
  }else{
    const ph=type==="activity"?"e.g. Bed making practice":type==="requirement"?"e.g. Training uniform / assignment":"e.g. What I learned today";
-   fields+=`<label class="field-label">Title<input id="qaTitle" placeholder="${ph}"></label><label class="field-label">Details<textarea id="qaValue" placeholder="Add details..."></textarea></label><label class="field-label">Attachment / Photo<input id="qaAttachment" class="file-input" type="file" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv"></label><div id="qaAttachmentPreview" class="attachment-preview" hidden></div>`;
+   fields+=`<label class="field-label">Title<input id="qaTitle" placeholder="${ph}"></label><label class="field-label">Details<textarea id="qaValue" placeholder="Add details..."></textarea></label><label class="field-label">Attachment (optional)<input id="qaAttachment" placeholder="e.g. Assignment.pdf"></label>`;
  }
  o.innerHTML=`<div class="modal"><div class="modal-kicker">Housekeeping NC II</div><h3>${labels[type]}</h3><p>This will appear immediately on the selected Calendar date.</p>${fields}<div class="modal-actions"><button type="button" class="secondary" id="qaCancel">Cancel</button><button type="button" class="primary" id="qaSave">Save</button></div></div>`;
- addModalCloseX(o);o.classList.add("show");
+ o.classList.add("show");
  document.getElementById("qaCancel").onclick=()=>o.classList.remove("show");
- const qaFile=document.getElementById("qaAttachment");
- if(qaFile)qaFile.onchange=()=>{const f=qaFile.files?.[0],p=document.getElementById("qaAttachmentPreview");if(f&&p){p.hidden=false;p.textContent="📎 "+f.name;}};
- const qaUpdateHours=()=>{
-   const ti=document.getElementById("qaTimeIn"),to=document.getElementById("qaTimeOut"),br=document.getElementById("qaBreak"),out=document.getElementById("qaHours");
-   if(ti&&to&&br&&out)out.textContent="Total training time: "+formatHours(calcHours(ti.value,to.value,br.value));
- };
- ["qaTimeIn","qaTimeOut","qaBreak"].forEach(id=>document.getElementById(id)?.addEventListener("input",qaUpdateHours));
-
- document.getElementById("qaSave").onclick=async()=>{
- const date=document.getElementById("qaDate").value||dateValue;
- if(type==="attendance"){
-   const rec={status:document.getElementById("qaStatus").value,timeIn:document.getElementById("qaTimeIn").value,timeOut:document.getElementById("qaTimeOut").value,break:document.getElementById("qaBreak").value,notes:document.getElementById("qaValue").value};
-   setAttendanceRecord(date,rec);
+ document.getElementById("qaSave").onclick=()=>{
+   const list=getQuickAdds();
+   const date=document.getElementById("qaDate").value||dateValue;
+   list.push({id:Date.now(),type,title:document.getElementById("qaTitle")?.value||labels[type],value:document.getElementById("qaValue")?.value||document.getElementById("qaStatus")?.value||"",date,attachmentName:document.getElementById("qaAttachment")?.value||"",createdAt:new Date().toISOString()});
+   localStorage.setItem("bloom55.quickAdds",JSON.stringify(list));
    o.classList.remove("show");
-   active="Calendar";calendarCursor=new Date(date+"T00:00:00");render();openCalendarDate(date);
-   return;
- }
- const list=getQuickAdds(),file=qaFile?.files?.[0]||null;
- if(file&&file.size>6*1024*1024){showModal("Attachment too large","Please choose a file smaller than 6 MB.");return;}
- let attachmentData="",attachmentName="";
- if(file){try{const x=file.type.startsWith("image/")?await compressImageFile(file):await fileToDataUrl(file);attachmentData=x.data;attachmentName=x.name;}catch(e){showModal("Attachment error","The selected file could not be read.");return;}}
- list.push({id:Date.now(),type,title:document.getElementById("qaTitle")?.value||labels[type],value:document.getElementById("qaValue")?.value||"",date,attachmentName,attachmentData,createdAt:new Date().toISOString()});
- try{localStorage.setItem("bloom55.quickAdds",JSON.stringify(list));}catch(e){showModal("Storage full","Try a smaller attachment.");return;}
- o.classList.remove("show");active="Calendar";calendarCursor=new Date(date+"T00:00:00");render();openCalendarDate(date);
-};
+   active="Calendar";
+   calendarCursor=new Date(date+"T00:00:00");
+   render();
+   openCalendarDate(date);
+ };
 }
 
 function parseNoteTasks(text){
@@ -1663,7 +751,8 @@ function render(){
  if(active==="Progress") content=progressPanel();
  if(active==="Notes") content=notesPanel();
  if(active==="Calendar") content=calendarPanel();
- document.getElementById("app").innerHTML=`<main class="app"><header class="header"><div><div class="greeting">${greetingText()}</div><h1>Attendance Tracker</h1><div class="subtitle">Your TESDA training journey, one weekday at a time <span>💜</span></div></div><div class="top-actions">${profile.photo?`<img class="profile-photo" style="width:42px;height:42px" src="${profile.photo}" alt="Profile">`:``}<button class="icon-btn" id="themeBtn" aria-label="Toggle theme">${dark?icon.sun:icon.moon}</button><button class="icon-btn" id="settingsBtn" aria-label="Settings">${icon.gear}</button></div></header>${content}</main><button class="fab" id="fab" type="button" aria-label="Add / Log Training Activity" aria-expanded="false">${icon.plus}</button><div class="quick-add" id="quickAdd" aria-hidden="true"><div class="quick-add-title">Add / Log Training Activity</div><button type="button" class="quick-add-item" data-add="attendance"><span class="qa-icon">✓</span><span><b>Add attendance</b><small>Record present, late, absent or excused</small></span></button><button type="button" class="quick-add-item" data-add="activity"><span class="qa-icon">📋</span><span><b>Add training activity</b><small>Log what you practiced or completed</small></span></button><button type="button" class="quick-add-item" data-add="note"><span class="qa-icon">📝</span><span><b>Add note</b><small>Save a quick training note</small></span></button><button type="button" class="quick-add-item" data-add="requirement"><span class="qa-icon">📎</span><span><b>Add requirement</b><small>Track something to submit or prepare</small></span></button><button type="button" class="quick-add-item" data-add="date"><span class="qa-icon">📅</span><span><b>Add important date</b><small>Assessment, deadline or event</small></span></button></div>${nav()}`;
+ if(active==="More") content=morePanel();
+ document.getElementById("app").innerHTML=`<main class="app"><header class="header"><div><h1>Housekeeping NC II Tracker</h1><div class="subtitle">Your TESDA training journey, one weekday at a time <span>💜</span></div></div><div class="top-actions"><button class="icon-btn" id="themeBtn" aria-label="Toggle theme">${dark?icon.sun:icon.moon}</button><button class="icon-btn" id="settingsBtn" aria-label="Settings">${icon.gear}</button></div></header>${content}</main><button class="fab" id="fab" type="button" aria-label="Add / Log Training Activity" aria-expanded="false">${icon.plus}</button><div class="quick-add" id="quickAdd" aria-hidden="true"><div class="quick-add-title">Add / Log Training Activity</div><button type="button" class="quick-add-item" data-add="attendance"><span class="qa-icon">✓</span><span><b>Add attendance</b><small>Record present, late, absent or excused</small></span></button><button type="button" class="quick-add-item" data-add="activity"><span class="qa-icon">📋</span><span><b>Add training activity</b><small>Log what you practiced or completed</small></span></button><button type="button" class="quick-add-item" data-add="note"><span class="qa-icon">📝</span><span><b>Add note</b><small>Save a quick training note</small></span></button><button type="button" class="quick-add-item" data-add="requirement"><span class="qa-icon">📎</span><span><b>Add requirement</b><small>Track something to submit or prepare</small></span></button><button type="button" class="quick-add-item" data-add="date"><span class="qa-icon">📅</span><span><b>Add important date</b><small>Assessment, deadline or event</small></span></button></div>${nav()}`;
  
   const forecastAdd=document.getElementById("forecastAdd");
   if(forecastAdd) forecastAdd.onclick=()=>showQuickAddForm("activity",forecastDate(0));
@@ -1675,26 +764,12 @@ function render(){
   document.querySelectorAll("[data-day]").forEach(b=>b.addEventListener("click",(e)=>{
    const id=Number(b.dataset.day);
    if(b.dataset.detail){ e.preventDefault(); showDayDetail(id); return; }
-   completed.has(id)?completed.delete(id):completed.add(id);save();render();if(completed.size===55)setTimeout(finalCelebration,250);
+   completed.has(id)?completed.delete(id):completed.add(id);save();render();
  }));
  document.querySelectorAll(".cal-cell[data-date]").forEach(b=>b.addEventListener("click",(e)=>{
    e.preventDefault();
    openCalendarDate(b.dataset.date);
  }));
-
- document.getElementById("prevTrainingWeek")?.addEventListener("click",()=>setScheduleWeek(getScheduleWeek()-1));
- document.getElementById("nextTrainingWeek")?.addEventListener("click",()=>setScheduleWeek(getScheduleWeek()+1));
- document.querySelectorAll("[data-attendance]").forEach(b=>b.onclick=()=>{const d=trainingDays().find(x=>x.id===Number(b.dataset.attendance));if(!d)return;setAttendance(isoDate(d.date),b.dataset.status);if(b.dataset.status==="Present"&&!completed.has(d.id)){completed.add(d.id);save();}render();});
- document.querySelectorAll("[data-check]").forEach(c=>c.onchange=()=>{const id=Number(c.dataset.check),list=getChecklist(id);list[Number(c.dataset.checkIndex)]=c.checked;setChecklist(id,list);render();});
- document.querySelectorAll("[data-journal]").forEach(b=>b.onclick=()=>showJournal(Number(b.dataset.journal)));
- document.querySelectorAll("[data-hours]").forEach(b=>b.onclick=()=>showHours(Number(b.dataset.hours)));
- document.getElementById("openProfile")?.addEventListener("click",profileSettings);
- document.getElementById("openReminderSettings")?.addEventListener("click",reminderSettingsModal);
- document.getElementById("openRequirements")?.addEventListener("click",requirementsVault);
- document.getElementById("openSupplies")?.addEventListener("click",suppliesChecklist);
- document.getElementById("openAchievements")?.addEventListener("click",achievements);
- document.getElementById("openWeeklySummary")?.addEventListener("click",weeklySummary);
- document.getElementById("printReport")?.addEventListener("click",printTrainingReport);
 
  document.querySelectorAll("[data-nav]").forEach(b=>b.addEventListener("click",()=>{active=b.dataset.nav;render();}));
  const prev=document.getElementById("prevMonth");
@@ -1708,94 +783,33 @@ function render(){
  document.querySelectorAll("[data-add]").forEach(b=>b.onclick=(e)=>{e.preventDefault();e.stopPropagation();closeQuickAdd();showQuickAddForm(b.dataset.add);});
  const saveNotes=document.getElementById("saveNotes"); if(saveNotes) saveNotes.onclick=()=>{notes=document.getElementById("notesBox").value;save();showModal("Notes saved","Your notes are stored on this device.");};
  const exp=document.getElementById("exportBtn"); if(exp) exp.onclick=exportData;
- const reset=document.getElementById("resetBtn"); if(reset) reset.onclick=()=>{if(confirm("Reset all Bloom55 progress and notes?")){completed=new Set();notes="";profile={name:"",role:"Housekeeping NC II Trainee",avatar:"🌸",photo:""};saveProfile();localStorage.removeItem("bloom55.quickAdds");localStorage.removeItem("bloom55.skippedDates");localStorage.removeItem("bloom55.scheduleAdjustments");localStorage.removeItem("bloom55.attendance");localStorage.removeItem("bloom55.expandedWeeks");localStorage.removeItem("bloom55.requirements");for(let i=1;i<=TOTAL;i++)localStorage.removeItem("bloom55.checklist."+i),localStorage.removeItem("bloom55.journal."+i);save();active="Schedule";render();}};
+ const reset=document.getElementById("resetBtn"); if(reset) reset.onclick=()=>{if(confirm("Reset all Bloom55 progress and notes?")){completed=new Set();notes="";localStorage.removeItem("bloom55.quickAdds");localStorage.removeItem("bloom55.skippedDates");localStorage.removeItem("bloom55.scheduleAdjustments");save();active="Schedule";render();}};
 }
 function showModal(title,text){
- const o=document.getElementById("overlay");o.innerHTML=`<div class="modal"><h3>${title}</h3><p>${text}</p><div class="modal-actions"><button class="primary" id="closeModal">Close</button></div></div>`;addModalCloseX(o);o.classList.add("show");document.getElementById("closeModal").onclick=()=>o.classList.remove("show");
+ const o=document.getElementById("overlay");o.innerHTML=`<div class="modal"><h3>${title}</h3><p>${text}</p><div class="modal-actions"><button class="primary" id="closeModal">Close</button></div></div>`;o.classList.add("show");document.getElementById("closeModal").onclick=()=>o.classList.remove("show");
 }
 function showSettings(){
- const o=document.getElementById("overlay");
- const name=escHtml(profile.name||"");
- const role=escHtml(profile.role||"Housekeeping NC II Trainee");
- const avatar=escHtml(profile.avatar||"🌸");
- o.innerHTML=`<div class="modal">
-   <div class="modal-kicker">Personalize Bloom55</div>
-   <h3>⚙️ Settings</h3>
-   <div class="settings-section-title">User Profile</div>
-   <div class="profile-card">
-     <div class="profile-avatar" id="profilePreview">${avatar}</div>
-     <div><div class="profile-name">${escHtml(profileDisplayName())}</div><div class="profile-meta">${role}</div></div>
-   </div>
-   <label class="settings-field">Name
-     <input id="profileName" maxlength="60" value="${name}" placeholder="Enter your name">
-   </label>
-   <label class="settings-field">Training / Role
-     <input id="profileRole" maxlength="80" value="${role}" placeholder="e.g. Housekeeping NC II Trainee">
-   </label>
-   <label class="settings-field">Profile photo / icon
-     <div class="profile-upload"><div id="profilePreview">${profile.photo?`<img class="profile-photo" src="${profile.photo}" alt="Profile photo">`:`<div class="profile-avatar">${avatar}</div>`}</div><div style="flex:1"><input id="profilePhoto" class="file-input" type="file" accept="image/*"><small>Upload a photo, or keep the icon below.</small></div></div>
-   </label>
-   <label class="settings-field">Profile icon
-     <select id="profileAvatar">${["🌸","😊","👩","🧑","⭐","💜","🏆","📚"].map(x=>`<option value="${x}" ${x===avatar?"selected":""}>${x}</option>`).join("")}</select>
-   </label>
-
-   <div class="settings-section-title">More</div>
-   <div class="settings-more-grid">
-     <button type="button" class="settings-more-btn" id="settingsExport"><b>Export backup</b><small>Save your progress, notes, calendar entries and profile as JSON.</small></button>
-     <button type="button" class="settings-more-btn" id="settingsReset"><b>Reset progress</b><small>Clear completed days, notes and saved calendar entries.</small></button>
-   </div>
-
-   <div class="settings-section-title">Appearance</div>
-   <div class="settings-panel-row">
-     <div><b>Night Mode</b><small>${dark?"Currently on":"Currently off"}</small></div>
-     <button type="button" class="task-forecast-btn secondary" id="themeModal">${dark?"☀️ Light":"🌙 Night"}</button>
-   </div>
-
-   <div class="settings-actions">
-     <button type="button" class="secondary" id="cancelSettings">Close</button>
-     <button type="button" class="primary" id="saveProfile">Save Profile</button>
-   </div>
- </div>`;
- addModalCloseX(o);o.classList.add("show");
-
- document.getElementById("cancelSettings").onclick=()=>o.classList.remove("show");
- let pendingProfilePhoto=profile.photo||"";
- document.getElementById("profileAvatar").onchange=e=>{if(!pendingProfilePhoto)document.getElementById("profilePreview").innerHTML=`<div class="profile-avatar">${escHtml(e.target.value)}</div>`;};
- document.getElementById("profilePhoto").onchange=async e=>{const f=e.target.files?.[0];if(!f)return;if(f.size>8*1024*1024){showModal("Photo too large","Please choose a profile photo smaller than 8 MB.");e.target.value="";return;}try{const x=await compressImageFile(f,700,.82);pendingProfilePhoto=x.data;document.getElementById("profilePreview").innerHTML=`<img class="profile-photo" src="${x.data}" alt="Profile photo preview">`;}catch(err){showModal("Photo error","The selected photo could not be read.");}};
- document.getElementById("saveProfile").onclick=()=>{profile={name:document.getElementById("profileName").value.trim(),role:document.getElementById("profileRole").value.trim()||"Housekeeping NC II Trainee",avatar:document.getElementById("profileAvatar").value||"🌸",photo:pendingProfilePhoto};try{saveProfile();}catch(e){showModal("Profile not saved","Try a smaller photo.");return;}o.classList.remove("show");render();};
- document.getElementById("themeModal").onclick=()=>{
-   dark=!dark;
-   setTheme();
-   showSettings();
- };
- document.getElementById("settingsExport").onclick=exportData;
- document.getElementById("settingsReset").onclick=()=>{
-   if(confirm("Reset all Bloom55 progress, notes and saved calendar entries?")){
-     completed=new Set();notes="";
-     localStorage.removeItem("bloom55.quickAdds");
-     localStorage.removeItem("bloom55.skippedDates");
-     localStorage.removeItem("bloom55.scheduleAdjustments");
-     for(let i=1;i<=TOTAL;i++) localStorage.removeItem("bloom55.note."+i);
-     save();
-     o.classList.remove("show");
-     active="Schedule";
-     render();
-   }
- };
+ const o=document.getElementById("overlay");o.innerHTML=`<div class="modal"><h3>Settings</h3><p>Bloom55 starts Monday, August 10, 2026 and counts 55 Monday-Friday training days (Saturday and Sunday excluded). Your progress and notes stay on this device.</p><div class="modal-actions"><button class="secondary" id="cancel">Close</button><button class="primary" id="themeModal">Toggle theme</button></div></div>`;o.classList.add("show");document.getElementById("cancel").onclick=()=>o.classList.remove("show");document.getElementById("themeModal").onclick=()=>{o.classList.remove("show");dark=!dark;render()};
 }
-
 function exportData(){
- const blob=new Blob([JSON.stringify({app:"Bloom55",start:"2026-08-10",completed:[...completed].sort((a,b)=>a-b),notes,quickAdds:getQuickAdds(),skippedDates:getSkippedDates(),scheduleAdjustments:JSON.parse(localStorage.getItem("bloom55.scheduleAdjustments")||"{}"),attendance:getAttendanceMap(),requirements:JSON.parse(localStorage.getItem("bloom55.requirements")||"[]"),checklists:Object.fromEntries(Array.from({length:TOTAL},(_,i)=>[i+1,getChecklist(i+1)])),journals:Object.fromEntries(Array.from({length:TOTAL},(_,i)=>[i+1,getJournal(i+1)])),profile},null,2)],{type:"application/json"});
+ const blob=new Blob([JSON.stringify({app:"Bloom55",start:"2026-08-10",completed:[...completed].sort((a,b)=>a-b),notes,quickAdds:getQuickAdds(),skippedDates:getSkippedDates(),scheduleAdjustments:JSON.parse(localStorage.getItem("bloom55.scheduleAdjustments")||"{}")},null,2)],{type:"application/json"});
  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="bloom55-backup.json";a.click();URL.revokeObjectURL(a.href);
 }
 document.addEventListener("click",(e)=>{const m=document.getElementById("quickAdd"),b=document.getElementById("fab");if(m&&m.classList.contains("show")&&!m.contains(e.target)&&e.target!==b)closeQuickAdd();});
 document.addEventListener("keydown",(e)=>{if(e.key==="Escape")closeQuickAdd();});
 render();
-setTimeout(showSmartReminder,120);
-if("serviceWorker" in navigator) navigator.serviceWorker.register("service-worker.js").catch(()=>{});
+if("serviceWorker" in navigator) navigator.serviceWorker.register("./service-worker.js").catch(()=>{});
 </script>
 
-
+<div id="settingsPanel" class="settings-panel" hidden>
+  <div class="settings-panel-inner">
+    <div class="settings-panel-title">⚙️ Settings</div>
+    <div class="settings-panel-row">
+      <div><b>More</b><small>Additional options and tools</small></div>
+      <button type="button" id="openMoreFromSettings" class="task-forecast-btn secondary">Open More</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
